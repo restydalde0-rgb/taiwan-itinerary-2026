@@ -38,12 +38,21 @@
 <!-- ================= HERO ================= -->
 <header class="hero" id="home">
   <img class="hero-img" src="https://images.unsplash.com/photo-1598935898639-81586f7d2129?auto=format&fit=crop&w=1920&q=80" alt="Taipei 101 skyline at dusk" onerror="this.remove()" />
-  <div class="hero-orb o1"></div>
-  <div class="hero-orb o2"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Manila → Taipei · 18–21 August 2026</div>
     <h1>Taiwan, <em>Beautifully</em> Planned.</h1>
     <p class="hero-tagline">Four days and three nights of night markets, mountain tea houses, sky lanterns and skyline sunsets — a first-timer's Taipei, optimized for food, photos and zero backtracking.</p>
+
+    <div class="hero-badges">
+      <div class="hero-badge">4 Days · 3 Nights</div>
+      <div class="hero-badge">2 Travelers</div>
+      <div class="hero-badge">Budget → Mid-range</div>
+      <div class="hero-badge">MRT-first routing</div>
+    </div>
+    <div class="hero-cta">
+      <a href="itinerary.html" class="btn btn-red">Start the Journey</a>
+      <a href="budget.html" class="btn btn-ghost">See the Budget</a>
+    </div>
 
     <div class="countdown" id="countdown">
       <div class="cd-cell"><div class="n" id="cdD">—</div><div class="l">Days</div></div>
@@ -51,86 +60,14 @@
       <div class="cd-cell"><div class="n" id="cdM">—</div><div class="l">Minutes</div></div>
       <div class="cd-cell"><div class="n" id="cdS">—</div><div class="l">Seconds</div></div>
     </div>
-
-    <div class="hero-badges">
-      <div class="hero-badge">🗓️ 4 Days · 3 Nights</div>
-      <div class="hero-badge">👫 2 Travelers</div>
-      <div class="hero-badge">💰 Budget → Mid-range</div>
-      <div class="hero-badge">🚇 MRT-first routing</div>
-    </div>
-    <div class="hero-cta">
-      <a href="itinerary.html" class="btn btn-red">Start the Journey ✈️</a>
-      <a href="budget.html" class="btn btn-ghost">See the Budget</a>
-    </div>
   </div>
   <a href="#overview" class="hero-scroll" aria-label="Scroll down">▾</a>
 </header>
 
 <main>
 
-<!-- ================= FLIGHT OVERVIEW ================= -->
-<section id="overview">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-kicker">Trip Overview</div>
-      <h2 class="section-title">The Flight Plan</h2>
-      <p class="section-sub">A red-eye out of Manila lands you in Taipei at 2:00 AM — which sounds rough, but it actually buys you three full sightseeing days. Here's how the trip is framed.</p>
-    </div>
-
-    <div class="flight-grid">
-      <div class="flight-card reveal">
-        <div class="flight-label">✈️ Departure</div>
-        <div class="flight-route">
-          <div class="flight-city"><div class="flight-code">MNL</div><div class="flight-city-name">Manila</div></div>
-          <div class="flight-path"><div class="line"></div>✈<div class="line"></div></div>
-          <div class="flight-city"><div class="flight-code">TPE</div><div class="flight-city-name">Taipei (Taoyuan)</div></div>
-        </div>
-        <div class="flight-meta">
-          <div><div class="k">Departs</div><div class="v">Mon, 17 Aug · 11:35 PM</div></div>
-          <div><div class="k">Arrives</div><div class="v">Tue, 18 Aug · 2:00 AM</div></div>
-        </div>
-      </div>
-      <div class="flight-card reveal">
-        <div class="flight-label">🛬 Return</div>
-        <div class="flight-route">
-          <div class="flight-city"><div class="flight-code">TPE</div><div class="flight-city-name">Taipei (Taoyuan)</div></div>
-          <div class="flight-path"><div class="line"></div>✈<div class="line"></div></div>
-          <div class="flight-city"><div class="flight-code">MNL</div><div class="flight-city-name">Manila</div></div>
-        </div>
-        <div class="flight-meta">
-          <div><div class="k">Departs</div><div class="v">Fri, 21 Aug · 10:20 AM</div></div>
-          <div><div class="k">Arrives</div><div class="v">Fri, 21 Aug · 1:05 PM</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="reveal">
-      <h3 style="font-size:1.15rem;margin-bottom:14px;">👫 Traveler Profile</h3>
-      <div class="chips">
-        <span class="chip">🇹🇼 First time in Taiwan</span>
-        <span class="chip">💸 Budget → Mid-range</span>
-        <span class="chip">🚶 Comfortable walking</span>
-        <span class="chip">🍜 Food lovers</span>
-        <span class="chip">🏮 Night markets</span>
-        <span class="chip">☕ Café hoppers</span>
-        <span class="chip">📸 Photography</span>
-        <span class="chip">🛍️ Shopping</span>
-        <span class="chip">⭐ Iconic sights + hidden gems</span>
-        <span class="chip">🚇 Efficient MRT routes</span>
-      </div>
-    </div>
-
-    <div class="stat-strip reveal">
-      <div class="stat"><div class="num">3</div><div class="lbl">Full sightseeing days</div></div>
-      <div class="stat"><div class="num">4</div><div class="lbl">Night markets & food streets</div></div>
-      <div class="stat"><div class="num">2</div><div class="lbl">Day-trip towns (Jiufen · Shifen)</div></div>
-      <div class="stat"><div class="num">₱32.7K</div><div class="lbl">Budget per person (≈ NT$16.9K, ex-flights)</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= THE FOUR DAYS ================= -->
-<section class="alt">
+<section id="overview">
   <div class="container">
     <div class="reveal">
       <div class="section-kicker">The Itinerary</div>
@@ -167,6 +104,77 @@
         <div class="dc-go">Explore Day 4</div>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ================= FLIGHT OVERVIEW ================= -->
+<section class="alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-kicker">Trip Overview</div>
+      <h2 class="section-title">The Flight Plan</h2>
+      <p class="section-sub">A red-eye out of Manila lands you in Taipei at 2:00 AM — which sounds rough, but it actually buys you three full sightseeing days. Here's how the trip is framed.</p>
+    </div>
+
+    <div class="flight-grid">
+      <div class="flight-card reveal">
+        <div class="flight-label">✈️ Departure</div>
+        <div class="flight-route">
+          <div class="flight-city"><div class="flight-code">MNL</div><div class="flight-city-name">Manila</div></div>
+          <div class="flight-path"><div class="line"></div>✈<div class="line"></div></div>
+          <div class="flight-city"><div class="flight-code">TPE</div><div class="flight-city-name">Taipei (Taoyuan)</div></div>
+        </div>
+        <div class="flight-meta">
+          <div><div class="k">Departs</div><div class="v">Mon, 17 Aug · 11:35 PM</div></div>
+          <div><div class="k">Arrives</div><div class="v">Tue, 18 Aug · 2:00 AM</div></div>
+        </div>
+      </div>
+      <div class="flight-card reveal">
+        <div class="flight-label">🛬 Return</div>
+        <div class="flight-route">
+          <div class="flight-city"><div class="flight-code">TPE</div><div class="flight-city-name">Taipei (Taoyuan)</div></div>
+          <div class="flight-path"><div class="line"></div>✈<div class="line"></div></div>
+          <div class="flight-city"><div class="flight-code">MNL</div><div class="flight-city-name">Manila</div></div>
+        </div>
+        <div class="flight-meta">
+          <div><div class="k">Departs</div><div class="v">Fri, 21 Aug · 10:20 AM</div></div>
+          <div><div class="k">Arrives</div><div class="v">Fri, 21 Aug · 1:05 PM</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="section-kicker">Who This Is For</div>
+      <h3 class="sub-title" style="margin-bottom:16px;">Traveler Profile</h3>
+      <div class="chips">
+        <span class="chip">🇹🇼 First time in Taiwan</span>
+        <span class="chip">💸 Budget → Mid-range</span>
+        <span class="chip">🚶 Comfortable walking</span>
+        <span class="chip">🍜 Food lovers</span>
+        <span class="chip">🏮 Night markets</span>
+        <span class="chip">☕ Café hoppers</span>
+        <span class="chip">📸 Photography</span>
+        <span class="chip">🛍️ Shopping</span>
+        <span class="chip">⭐ Iconic sights + hidden gems</span>
+        <span class="chip">🚇 Efficient MRT routes</span>
+      </div>
+    </div>
+
+    <div class="stat-strip reveal">
+      <div class="stat"><div class="num">3</div><div class="lbl">Full sightseeing days</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Night markets & food streets</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Day-trip towns (Jiufen · Shifen)</div></div>
+      <div class="stat"><div class="num">₱32.7K</div><div class="lbl">Budget per person (≈ NT$16.9K, ex-flights)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHOTO INTERLUDE ================= -->
+<section class="photo-band" aria-label="Shifen sky lanterns">
+  <div class="container pb-inner reveal">
+    <div class="section-kicker">The Moment</div>
+    <p class="pb-quote">Write a wish on rice paper, light the flame, and watch it rise over the old railway tracks of Shifen.</p>
+    <a href="day3.html" class="btn btn-ghost">See Day 3 — the lantern day</a>
   </div>
 </section>
 

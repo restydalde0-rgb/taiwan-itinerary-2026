@@ -127,6 +127,37 @@ if (revealEls.length && 'IntersectionObserver' in window) {
   revealEls.forEach(el => revealer.observe(el));
 }
 
+// ---------- Photo lightbox (timeline & stay photos) ----------
+// Progressive enhancement: photos work as plain <img> without JS;
+// with JS, tapping opens a full-screen preview with the caption.
+const lbTargets = document.querySelectorAll('.tl-photo img, .rh-photo img');
+if (lbTargets.length) {
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-label', 'Photo preview');
+  lb.hidden = true;
+  lb.innerHTML = '<button class="lb-close" aria-label="Close preview">×</button><figure><img alt="" /><figcaption></figcaption></figure>';
+  document.body.appendChild(lb);
+  const lbImg = lb.querySelector('img');
+  const lbCap = lb.querySelector('figcaption');
+  function lbClose() { lb.hidden = true; document.body.style.overflow = ''; }
+  lbTargets.forEach(img => {
+    const fig = img.closest('figure');
+    if (fig) fig.classList.add('lb-ready');
+    img.addEventListener('click', () => {
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      const cap = fig && fig.querySelector('figcaption');
+      lbCap.textContent = cap ? cap.textContent : img.alt;
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  lb.addEventListener('click', e => { if (e.target !== lbImg) lbClose(); });
+  window.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) lbClose(); });
+}
+
 // ---------- Countdown to departure (home) ----------
 const cdEl = document.getElementById('countdown');
 if (cdEl) {
