@@ -1,41 +1,54 @@
-// ============================================
-// TAIWAN 2026 — interactions
-// ============================================
+// ==============================================================
+// TAIWANDER '26 — shared interactions (all pages)
+// Every block guards for element existence so one file serves
+// the whole site.
+// ==============================================================
+
+// ---------- Theme (dark mode) ----------
+const THEME_KEY = 'taiwan2026-theme';
+const themeToggle = document.getElementById('themeToggle');
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  if (themeToggle) themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+(function initTheme() {
+  let saved = null;
+  try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+})();
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+  });
+}
+
+// ---------- Page-load fade ----------
+window.addEventListener('DOMContentLoaded', () => document.body.classList.add('loaded'));
 
 // ---------- Mobile nav ----------
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a =>
-  a.addEventListener('click', () => navLinks.classList.remove('open'))
-);
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => navLinks.classList.remove('open'))
+  );
+}
 
 // ---------- Nav shadow + back-to-top ----------
 const nav = document.getElementById('nav');
 const toTop = document.getElementById('toTop');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 10);
-  toTop.classList.toggle('show', window.scrollY > 600);
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 10);
+  if (toTop) toTop.classList.toggle('show', window.scrollY > 600);
 }, { passive: true });
-toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// ---------- Scroll-spy: highlight active section ----------
-const sections = document.querySelectorAll('section[id], header[id]');
-const linkMap = {};
-navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
-  linkMap[a.getAttribute('href').slice(1)] = a;
-});
-const spy = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting && linkMap[e.target.id]) {
-      Object.values(linkMap).forEach(a => a.classList.remove('active'));
-      linkMap[e.target.id].classList.add('active');
-    }
-  });
-}, { rootMargin: '-35% 0px -55% 0px' });
-sections.forEach(s => spy.observe(s));
-
-// ---------- Reveal-on-scroll animations ----------
+// ---------- Reveal-on-scroll ----------
 const revealer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -46,42 +59,163 @@ const revealer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => revealer.observe(el));
 
+// ---------- Countdown to departure (home) ----------
+const cdEl = document.getElementById('countdown');
+if (cdEl) {
+  // MNL departure: Mon 17 Aug 2026, 11:35 PM (UTC+8)
+  const target = new Date('2026-08-17T23:35:00+08:00').getTime();
+  const cells = {
+    d: document.getElementById('cdD'), h: document.getElementById('cdH'),
+    m: document.getElementById('cdM'), s: document.getElementById('cdS')
+  };
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      cdEl.innerHTML = '<div class="cd-cell"><div class="n">🏮</div><div class="l">Enjoy Taipei!</div></div>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor(diff / 3600000) % 24;
+    const m = Math.floor(diff / 60000) % 60;
+    const s = Math.floor(diff / 1000) % 60;
+    cells.d.textContent = d;
+    cells.h.textContent = String(h).padStart(2, '0');
+    cells.m.textContent = String(m).padStart(2, '0');
+    cells.s.textContent = String(s).padStart(2, '0');
+    setTimeout(tick, 1000);
+  }
+  tick();
+
+  // "N sleeps until…" headline in the CTA band
+  const sleepsTitle = document.getElementById('sleepsTitle');
+  if (sleepsTitle) {
+    const days = Math.ceil((target - Date.now()) / 86400000);
+    if (days > 0) sleepsTitle.textContent = `${days} sleep${days === 1 ? '' : 's'} until soy milk & sky lanterns 🏮`;
+  }
+}
+
+// ---------- Animated counters (budget KPIs) ----------
+const counters = document.querySelectorAll('[data-count]');
+if (counters.length) {
+  const fmt = new Intl.NumberFormat('en-US');
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      counterObs.unobserve(e.target);
+      const el = e.target;
+      const end = parseFloat(el.dataset.count);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const dur = 1300;
+      const t0 = performance.now();
+      function step(t) {
+        const p = Math.min((t - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + fmt.format(Math.round(end * eased)) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(c => counterObs.observe(c));
+}
+
+// ---------- Donut chart (budget) ----------
+// Renders from the legend's data-value attributes so the visible
+// legend is the single source of truth (chart never gates values).
+const donutSvg = document.getElementById('donutSvg');
+const donutLegend = document.getElementById('donutLegend');
+if (donutSvg && donutLegend) {
+  const items = [...donutLegend.querySelectorAll('li')];
+  const values = items.map(li => parseFloat(li.dataset.value));
+  const colors = items.map(li => li.dataset.color);
+  const total = values.reduce((a, b) => a + b, 0);
+  const R = 80, C = 2 * Math.PI * R, GAP = 2.5;
+  const NS = 'http://www.w3.org/2000/svg';
+  let offset = 0;
+  values.forEach((v, i) => {
+    const len = (v / total) * C;
+    const seg = document.createElementNS(NS, 'circle');
+    seg.setAttribute('class', 'seg');
+    seg.setAttribute('cx', 100); seg.setAttribute('cy', 100); seg.setAttribute('r', R);
+    seg.setAttribute('stroke', `var(${colors[i]})`);
+    seg.setAttribute('stroke-dasharray', `${Math.max(len - GAP, 0.5)} ${C - len + GAP}`);
+    seg.setAttribute('stroke-dashoffset', -offset);
+    seg.setAttribute('transform', 'rotate(-90 100 100)');
+    seg.setAttribute('tabindex', '0');
+    const name = items[i].querySelector('.nm').textContent;
+    const title = document.createElementNS(NS, 'title');
+    title.textContent = `${name}: NT$${values[i].toLocaleString()} (${(v / total * 100).toFixed(1)}%)`;
+    seg.appendChild(title);
+    // legend ↔ segment cross-highlight
+    seg.addEventListener('mouseenter', () => { donutSvg.classList.add('dim'); items[i].style.background = 'var(--surface-2)'; });
+    seg.addEventListener('mouseleave', () => { donutSvg.classList.remove('dim'); items[i].style.background = ''; });
+    items[i].addEventListener('mouseenter', () => { donutSvg.classList.add('dim'); seg.style.opacity = '1'; seg.style.strokeWidth = '32'; });
+    items[i].addEventListener('mouseleave', () => { donutSvg.classList.remove('dim'); seg.style.opacity = ''; seg.style.strokeWidth = ''; });
+    donutSvg.insertBefore(seg, donutSvg.querySelector('text'));
+    offset += len;
+  });
+  // fill % labels in legend
+  items.forEach((li, i) => {
+    const pct = li.querySelector('.pct');
+    if (pct) pct.textContent = (values[i] / total * 100).toFixed(0) + '%';
+  });
+}
+
+// ---------- Daily-spend horizontal bars ----------
+const hbars = document.querySelectorAll('.hb-fill[data-width]');
+if (hbars.length) {
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.dataset.width + '%';
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  hbars.forEach(b => barObs.observe(b));
+}
+
 // ---------- Currency converter (NT$1 = ₱1.93, Jul 2026) ----------
 const RATE = 1.93;
 const twdInput = document.getElementById('twdInput');
 const phpInput = document.getElementById('phpInput');
-twdInput.addEventListener('input', () => {
-  const v = parseFloat(twdInput.value);
-  phpInput.value = isNaN(v) ? '' : (v * RATE).toFixed(2);
-});
-phpInput.addEventListener('input', () => {
-  const v = parseFloat(phpInput.value);
-  twdInput.value = isNaN(v) ? '' : (v / RATE).toFixed(2);
-});
+if (twdInput && phpInput) {
+  twdInput.addEventListener('input', () => {
+    const v = parseFloat(twdInput.value);
+    phpInput.value = isNaN(v) ? '' : (v * RATE).toFixed(2);
+  });
+  phpInput.addEventListener('input', () => {
+    const v = parseFloat(phpInput.value);
+    twdInput.value = isNaN(v) ? '' : (v / RATE).toFixed(2);
+  });
+}
 
 // ---------- Packing checklist with localStorage ----------
 const checks = document.querySelectorAll('[data-check]');
-const bar = document.getElementById('checkBar');
-const label = document.getElementById('checkLabel');
-const STORE_KEY = 'taiwan2026-packing';
+if (checks.length) {
+  const bar = document.getElementById('checkBar');
+  const label = document.getElementById('checkLabel');
+  const STORE_KEY = 'taiwan2026-packing';
 
-function loadChecks() {
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) {}
-  checks.forEach(c => { c.checked = !!saved[c.dataset.check]; });
+  function loadChecks() {
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) {}
+    checks.forEach(c => { c.checked = !!saved[c.dataset.check]; });
+  }
+  function saveChecks() {
+    const state = {};
+    checks.forEach(c => { state[c.dataset.check] = c.checked; });
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function updateProgress() {
+    const done = [...checks].filter(c => c.checked).length;
+    if (bar) bar.style.width = (done / checks.length * 100) + '%';
+    if (label) label.textContent = done === checks.length
+      ? '🎉 All packed — Taipei is waiting!'
+      : `${done} of ${checks.length} packed`;
+  }
+  checks.forEach(c => c.addEventListener('change', () => { saveChecks(); updateProgress(); }));
+  loadChecks();
+  updateProgress();
 }
-function saveChecks() {
-  const state = {};
-  checks.forEach(c => { state[c.dataset.check] = c.checked; });
-  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
-}
-function updateProgress() {
-  const done = [...checks].filter(c => c.checked).length;
-  bar.style.width = (done / checks.length * 100) + '%';
-  label.textContent = done === checks.length
-    ? '🎉 All packed — Taipei is waiting!'
-    : `${done} of ${checks.length} packed`;
-}
-checks.forEach(c => c.addEventListener('change', () => { saveChecks(); updateProgress(); }));
-loadChecks();
-updateProgress();

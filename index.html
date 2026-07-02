@@ -3,43 +3,54 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Taiwan 2026 — 4D3N Taipei Travel Itinerary</title>
-<meta name="description" content="A premium 4-day, 3-night Taipei travel itinerary for first-time visitors — August 18–21, 2026. Night markets, Jiufen, Taipei 101, food guide, budget & more." />
+<title>Taiwan 2026 — 4D3N Taipei Travel Planner</title>
+<meta name="description" content="A premium 4-day, 3-night Taipei travel planner for first-time visitors — August 18–21, 2026. Night markets, Jiufen, Taipei 101, food guide, budget & more." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏮</text></svg>" />
+<script>try{var t=localStorage.getItem('taiwan2026-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 </head>
 <body>
 
-<!-- ================= NAV ================= -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#home" class="nav-logo">TAI<span>WANDER</span> ’26</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <a href="index.html" class="nav-logo">TAI<span>WANDER</span><small>’26</small></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#stay">Stay</a></li>
-      <li><a href="#day1">Day 1</a></li>
-      <li><a href="#day2">Day 2</a></li>
-      <li><a href="#day3">Day 3</a></li>
-      <li><a href="#day4">Day 4</a></li>
-      <li><a href="#food">Food</a></li>
-      <li><a href="#transport">Transport</a></li>
-      <li><a href="#budget">Budget</a></li>
-      <li><a href="#essentials">Essentials</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="stay.html">Stay</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
   </div>
 </nav>
 
 <!-- ================= HERO ================= -->
 <header class="hero" id="home">
   <img class="hero-img" src="https://images.unsplash.com/photo-1598935898639-81586f7d2129?auto=format&fit=crop&w=1920&q=80" alt="Taipei 101 skyline at dusk" onerror="this.remove()" />
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Manila → Taipei · 18–21 August 2026</div>
     <h1>Taiwan, <em>Beautifully</em> Planned.</h1>
     <p class="hero-tagline">Four days and three nights of night markets, mountain tea houses, sky lanterns and skyline sunsets — a first-timer's Taipei, optimized for food, photos and zero backtracking.</p>
+
+    <div class="countdown" id="countdown">
+      <div class="cd-cell"><div class="n" id="cdD">—</div><div class="l">Days</div></div>
+      <div class="cd-cell"><div class="n" id="cdH">—</div><div class="l">Hours</div></div>
+      <div class="cd-cell"><div class="n" id="cdM">—</div><div class="l">Minutes</div></div>
+      <div class="cd-cell"><div class="n" id="cdS">—</div><div class="l">Seconds</div></div>
+    </div>
+
     <div class="hero-badges">
       <div class="hero-badge">🗓️ 4 Days · 3 Nights</div>
       <div class="hero-badge">👫 2 Travelers</div>
@@ -47,14 +58,16 @@
       <div class="hero-badge">🚇 MRT-first routing</div>
     </div>
     <div class="hero-cta">
-      <a href="#day1" class="btn btn-coral">Start the Journey ✈️</a>
-      <a href="#budget" class="btn btn-ghost">See the Budget</a>
+      <a href="itinerary.html" class="btn btn-red">Start the Journey ✈️</a>
+      <a href="budget.html" class="btn btn-ghost">See the Budget</a>
     </div>
   </div>
   <a href="#overview" class="hero-scroll" aria-label="Scroll down">▾</a>
 </header>
 
-<!-- ================= OVERVIEW ================= -->
+<main>
+
+<!-- ================= FLIGHT OVERVIEW ================= -->
 <section id="overview">
   <div class="container">
     <div class="reveal">
@@ -115,695 +128,107 @@
   </div>
 </section>
 
-<!-- ================= STAY ================= -->
-<section id="stay" class="alt">
+<!-- ================= THE FOUR DAYS ================= -->
+<section class="alt">
   <div class="container">
     <div class="reveal">
-      <div class="section-kicker">Where to Stay</div>
-      <h2 class="section-title">5 Stays, One Winner</h2>
-      <p class="section-sub">All five are inside the Ximending / Taipei Main Station / Zhongshan golden triangle — the best base for first-timers because the Airport MRT, three metro lines and two food streets converge here. Prices are typical nightly rates for 2 adults in mid-August; always re-check live availability for Aug 18–21, 2026 before booking.</p>
+      <div class="section-kicker">The Itinerary</div>
+      <h2 class="section-title">Four Days, Perfectly Paced</h2>
+      <p class="section-sub">Every day has its own page with a full timeline, MRT routes, costs, photo spots and maps. Tap a day to dive in.</p>
     </div>
-
-    <div class="card-grid">
-
-      <!-- BEST PICK -->
-      <div class="card stay-card best reveal">
-        <div class="best-ribbon">🏆 Best Overall</div>
-        <div class="card-banner g-teal">🏙️</div>
-        <div class="card-body">
-          <span class="pill pill-teal">Ximending / Taipei Main</span>
-          <h3>XN734 · Taipei Main Station Apartment</h3>
-          <p class="muted">Modern private apartment in Wanhua District, sitting exactly between Taipei Main Station and Ximending.</p>
-          <div class="stay-price"><span class="amt">≈ NT$2,600</span><span class="per">/ night · ≈ NT$7,800 (₱15,050) for 3 nights</span></div>
-          <ul class="stay-facts">
-            <li><span>🚇</span><span><strong>6–8 min walk</strong> to Ximen or Taipei Main Station MRT</span></li>
-            <li><span>📍</span><span>Nearby: Ximending walking streets, Red House, North Gate, Taipei Main food halls</span></li>
-            <li><span>🛋️</span><span>Amenities: AC, Wi-Fi, washer, kitchenette, self check-in lockbox</span></li>
-          </ul>
-          <div class="proscons">
-            <div class="pros"><strong>Pros</strong><ul><li>Unbeatable dual location</li><li>Self check-in (great for 2 AM plans)</li><li>Direct Airport MRT access</li></ul></div>
-            <div class="cons"><strong>Cons</strong><ul><li>Older building exterior</li><li>Street noise on weekends</li></ul></div>
-          </div>
-          <div class="stay-why">💡 <strong>Why it wins:</strong> Everything in this itinerary starts or ends at Ximen or Taipei Main. Self check-in solves the 2 AM arrival, and Day 4's airport run becomes a 40-minute door-to-terminal trip.</div>
-          <div class="card-link"><a href="https://www.airbnb.com/rooms/839732520562468136" target="_blank" rel="noopener">View on Airbnb →</a></div>
-        </div>
-      </div>
-
-      <div class="card stay-card reveal">
-        <div class="card-banner g-coral">🛏️</div>
-        <div class="card-body">
-          <span class="pill pill-coral">Zhongzheng · near Ximending</span>
-          <h3>Taipei Station Group Apartment</h3>
-          <p class="muted">Spacious multi-bed apartment in Zhongzheng District — more room than a couple needs, at a shared-cost sweet spot.</p>
-          <div class="stay-price"><span class="amt">≈ NT$2,900</span><span class="per">/ night · ≈ NT$8,700 (₱16,790) for 3 nights</span></div>
-          <ul class="stay-facts">
-            <li><span>🚇</span><span><strong>~7 min walk</strong> to Taipei Main Station</span></li>
-            <li><span>📍</span><span>Nearby: 228 Peace Park, Ximending, Q Square Mall</span></li>
-            <li><span>🛋️</span><span>Amenities: AC, Wi-Fi, multiple beds, dining area</span></li>
-          </ul>
-          <div class="proscons">
-            <div class="pros"><strong>Pros</strong><ul><li>Lots of space</li><li>Steps from Airport MRT terminus</li></ul></div>
-            <div class="cons"><strong>Cons</strong><ul><li>Sized for groups, not couples</li><li>Basic decor</li></ul></div>
-          </div>
-          <div class="stay-why">💡 <strong>Why recommended:</strong> Best pick if friends join later or you want maximum space per peso near the station.</div>
-          <div class="card-link"><a href="https://www.airbnb.com/rooms/23344386" target="_blank" rel="noopener">View on Airbnb →</a></div>
-        </div>
-      </div>
-
-      <div class="card stay-card reveal">
-        <div class="card-banner g-gold">🌿</div>
-        <div class="card-body">
-          <span class="pill pill-gold">Taipei Main Station</span>
-          <h3>Star Hostel Taipei Main — Private Double</h3>
-          <p class="muted">Taipei's most-loved designer hostel: a plant-filled loft lounge, famous free breakfast, and hotel-clean private rooms.</p>
-          <div class="stay-price"><span class="amt">≈ NT$2,300</span><span class="per">/ night · ≈ NT$6,900 (₱13,320) for 3 nights</span></div>
-          <ul class="stay-facts">
-            <li><span>🚇</span><span><strong>5 min walk</strong> to Taipei Main Station (Y-district exits)</span></li>
-            <li><span>📍</span><span>Nearby: Airport MRT, Q Square, Huayin Street eats</span></li>
-            <li><span>🛋️</span><span>Amenities: free breakfast, 24-hr reception, luggage storage, lounge</span></li>
-          </ul>
-          <div class="proscons">
-            <div class="pros"><strong>Pros</strong><ul><li>24-hr front desk — perfect for 2 AM arrival</li><li>Free breakfast & luggage storage</li></ul></div>
-            <div class="cons"><strong>Cons</strong><ul><li>Compact rooms</li><li>Hostel vibe isn't for everyone</li></ul></div>
-          </div>
-          <div class="stay-why">💡 <strong>Why recommended:</strong> The safest logistical choice — a staffed desk at 3:30 AM beats any lockbox if you value zero friction.</div>
-          <div class="card-link"><a href="https://www.starhostel.com.tw/" target="_blank" rel="noopener">Official site / book →</a></div>
-        </div>
-      </div>
-
-      <div class="card stay-card reveal">
-        <div class="card-banner g-rose">🎬</div>
-        <div class="card-body">
-          <span class="pill pill-coral">Ximending core</span>
-          <h3>Meander 1948 — Private Double</h3>
-          <p class="muted">A restored 1948 building in the middle of Ximending's neon — boutique-hostel private rooms right on the walking streets.</p>
-          <div class="stay-price"><span class="amt">≈ NT$2,700</span><span class="per">/ night · ≈ NT$8,100 (₱15,630) for 3 nights</span></div>
-          <ul class="stay-facts">
-            <li><span>🚇</span><span><strong>3 min walk</strong> to Ximen MRT (Blue & Green lines)</span></li>
-            <li><span>📍</span><span>Nearby: Red House, Ximending street food, cinema street murals</span></li>
-            <li><span>🛋️</span><span>Amenities: 24-hr desk, rooftop, laundry, luggage room</span></li>
-          </ul>
-          <div class="proscons">
-            <div class="pros"><strong>Pros</strong><ul><li>You live inside the night-life district</li><li>Photogenic heritage interiors</li></ul></div>
-            <div class="cons"><strong>Cons</strong><ul><li>Weekend crowd noise</li><li>1 transfer to Airport MRT</li></ul></div>
-          </div>
-          <div class="stay-why">💡 <strong>Why recommended:</strong> If atmosphere beats convenience for you, waking up inside Ximending is the most "Taipei" experience on this list.</div>
-          <div class="card-link"><a href="https://www.meanderhostel.com/" target="_blank" rel="noopener">Official site / book →</a></div>
-        </div>
-      </div>
-
-      <div class="card stay-card reveal">
-        <div class="card-banner g-plum">🌸</div>
-        <div class="card-body">
-          <span class="pill pill-gold">Zhongshan</span>
-          <h3>Zhongshan Designer Studio (Airbnb area pick)</h3>
-          <p class="muted">Zhongshan is Taipei's café-and-boutique quarter — pick any highly-rated studio within 5 minutes of Zhongshan MRT.</p>
-          <div class="stay-price"><span class="amt">≈ NT$3,000</span><span class="per">/ night · ≈ NT$9,000 (₱17,370) for 3 nights</span></div>
-          <ul class="stay-facts">
-            <li><span>🚇</span><span><strong>~5 min walk</strong> to Zhongshan MRT (Red & Green lines)</span></li>
-            <li><span>📍</span><span>Nearby: Chifeng Street cafés, Ningxia Night Market (12 min walk), Dadaocheng</span></li>
-            <li><span>🛋️</span><span>Amenities: typically AC, Wi-Fi, kitchenette, washer</span></li>
-          </ul>
-          <div class="proscons">
-            <div class="pros"><strong>Pros</strong><ul><li>Best café density in Taipei</li><li>Walk home from Ningxia Night Market</li></ul></div>
-            <div class="cons"><strong>Cons</strong><ul><li>Priciest of the five</li><li>One stop removed from Ximending</li></ul></div>
-          </div>
-          <div class="stay-why">💡 <strong>Why recommended:</strong> Tailor-made for the café-loving half of this trip — browse live listings in the linked search.</div>
-          <div class="card-link"><a href="https://www.airbnb.com/s/Zhongshan-District--Taipei--Taiwan/homes?checkin=2026-08-18&checkout=2026-08-21&adults=2" target="_blank" rel="noopener">Browse Zhongshan Airbnbs →</a></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tip tip-amber reveal"><span class="ico">⚠️</span><div><strong>Booking note:</strong> Airbnb inventory in Taipei rotates often (many operate in a legal grey zone), so listings can disappear. Book early for August, screenshot the address in Chinese for taxi drivers, and message the host immediately about your <strong>2:00 AM arrival</strong> — confirm self check-in works at any hour.</div></div>
-
-    <div class="map-embed reveal">
-      <iframe loading="lazy" src="https://maps.google.com/maps?q=Ximending,Taipei&z=14&output=embed" title="Map of Ximending and Taipei Main Station area"></iframe>
-      <div class="map-caption">📍 Base camp: the Ximending ↔ Taipei Main Station triangle</div>
+    <div class="day-cards">
+      <a href="day1.html" class="day-card d1 reveal">
+        <div class="dc-num">Day 01 · Tue, 18 Aug</div>
+        <h3>Landing Softly: Ximending, Memorials & Raohe Lights</h3>
+        <p>A smart 2 AM arrival plan, a slow brunch morning, then Taipei's classics — ending under the lanterns of its best night market.</p>
+        <div class="dc-tags"><span>🛬 Arrival day</span><span>🏛️ Icons</span><span>🏮 Raohe</span></div>
+        <div class="dc-go">Explore Day 1</div>
+      </a>
+      <a href="day2.html" class="day-card d2 reveal">
+        <div class="dc-num">Day 02 · Wed, 19 Aug</div>
+        <h3>The Classics: Elephant Mountain to Ningxia Nights</h3>
+        <p>Taipei's postcard day — the skyline from above (twice), a creative park for café lovers, and the city's best old-school eating street.</p>
+        <div class="dc-tags"><span>⛰️ Hike</span><span>🏙️ 101 Observatory</span><span>🍢 Ningxia</span></div>
+        <div class="dc-go">Explore Day 2</div>
+      </a>
+      <a href="day3.html" class="day-card d3 reveal">
+        <div class="dc-num">Day 03 · Thu, 20 Aug</div>
+        <h3>Spirited Away: Shifen Lanterns & Jiufen Tea Houses</h3>
+        <p>The unmissable day trip — release a sky lantern on old railway tracks, chase a waterfall, then sip tea above the sea.</p>
+        <div class="dc-tags"><span>🚂 Pingxi Line</span><span>🏮 Sky lantern</span><span>🍵 A-Mei</span></div>
+        <div class="dc-go">Explore Day 3</div>
+      </a>
+      <a href="day4.html" class="day-card d4 reveal">
+        <div class="dc-num">Day 04 · Fri, 21 Aug</div>
+        <h3>One Last Breakfast, Then Home</h3>
+        <p>A 10:20 AM international departure means a disciplined morning — the exact clock to follow, minute by minute.</p>
+        <div class="dc-tags"><span>🛫 TPE 10:20 AM</span><span>🚄 Airport MRT</span></div>
+        <div class="dc-go">Explore Day 4</div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ================= DAY 1 ================= -->
-<section id="day1">
-  <div class="container">
-    <div class="day-hero d1 reveal">
-      <div class="day-num">Day 01 · Tuesday, 18 August</div>
-      <h2>Landing Softly: Ximending, Memorials & Raohe Lights</h2>
-      <p>A smart 2 AM arrival plan, a slow brunch morning, then Taipei's classics — ending under the lanterns of its best night market.</p>
-      <div class="day-tags"><span>🛬 Arrival day</span><span>🏛️ Icons</span><span>🌆 Sunset at 101</span><span>🏮 Raohe Night Market</span></div>
-    </div>
-
-    <h3 class="reveal" style="font-size:1.3rem;margin-bottom:6px;">🌙 The 2:00 AM Question</h3>
-    <p class="reveal" style="color:var(--ink-soft);max-width:680px;">The Airport MRT doesn't run overnight (roughly 6:00 AM – midnight), so you have three realistic moves:</p>
-
-    <div class="option-grid">
-      <div class="option recommended reveal">
-        <div class="opt-badge">✅ Recommended</div>
-        <h4>🚌 Night bus + check in immediately</h4>
-        <p>Take the 24-hour <strong>Kuo-Kuang Bus 1819</strong> (NT$140, every 30–60 min overnight, ~50 min) from the arrivals hall to Taipei Main Station, then a short taxi/walk to your stay. <strong>Book your accommodation from the night of Aug 17</strong> (or confirm free 3 AM check-in with the host). You'll be asleep by ~4 AM and wake up on your own clock. One "extra" night costs less than a wasted, zombie first day.</p>
-      </div>
-      <div class="option reveal">
-        <h4>🛋️ Wait at the airport until ~6 AM</h4>
-        <p>Taoyuan T1/T2 are safe with 24-hr convenience stores and rest zones. Catch the first Airport MRT Express (from ~6:00 AM, NT$150, 36 min). Free, but you'll start Day 1 exhausted — only worth it if you sleep well on planes.</p>
-      </div>
-      <div class="option reveal">
-        <h4>🧳 Luggage storage if check-in is 3 PM</h4>
-        <p>If early check-in truly isn't possible: drop bags in the coin lockers at <strong>Taipei Main Station B1</strong> (NT$20–70/3 hrs) or the airport's luggage counters, then start the day light. Solid plan B, but plan A beats it.</p>
-      </div>
-    </div>
-
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <span class="tl-time">2:00 – 4:00 AM</span>
-        <div class="tl-card">
-          <h4>🛬 Land, clear immigration, ride into the city</h4>
-          <p>Immigration at 2 AM is fast (~20–30 min). Grab cash at the arrivals ATM, pick up your pre-ordered SIM/eSIM, and buy an <strong>EasyCard</strong> at the 24-hr convenience store. Board Bus 1819 to Taipei Main Station.</p>
-          <div class="tl-meta"><span>💰 Bus NT$140/pax</span><span>⏱️ ~50 min</span><span><a href="https://www.google.com/maps/search/Taoyuan+International+Airport+Terminal+1+bus+station" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">4:00 – 10:00 AM</span>
-        <div class="tl-card">
-          <h4>😴 Check in & sleep — protect the trip</h4>
-          <p>Self check-in, blackout curtains, alarm at 10:00. Skipping this sleep is the #1 first-timer mistake on red-eye arrivals.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">10:45 AM</span>
-        <div class="tl-card">
-          <h4>🍳 Brunch: Fuhang Dou Jiang <span class="pill pill-coral">Iconic</span></h4>
-          <p>Taiwan's most famous breakfast house (Huashan Market, 2F). Charcoal-toasted shaobing with egg, warm salty soy milk, youtiao. The queue moves fast; late morning is calmer than 7 AM. Closed Mondays — you're safe on a Tuesday.</p>
-          <p><em>Backup with zero queue:</em> Yonghe Doujiang Dawang, any branch.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Ximen → Shandao Temple (Blue line, 2 stops)</span><span>💰 ~NT$120/pax</span><span><a href="https://www.google.com/maps/search/Fu+Hang+Dou+Jiang+Taipei" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">12:15 PM</span>
-        <div class="tl-card">
-          <h4>🎪 Ximending + The Red House</h4>
-          <p>Back to home turf: Asia's "Harajuku of Taipei." Wander the pedestrian grid, Cinema Street murals, sneaker shops and claw machines. Then step into the octagonal 1908 <strong>Red House</strong> — heritage theater turned designer-craft market (free entry, closed Mondays).</p>
-          <p><em>Café stop:</em> 8¾ or Fong Da Coffee (since 1956) for an iced brew.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Shandao Temple → Ximen (Blue line)</span><span>💰 Free to wander</span><span><a href="https://www.google.com/maps/search/The+Red+House+Ximending+Taipei" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">2:45 PM</span>
-        <div class="tl-card">
-          <h4>🏛️ Chiang Kai-shek Memorial Hall</h4>
-          <p>Taipei's grandest plaza: the white-and-blue octagonal hall, Liberty Square arch, and the National Theater & Concert Hall flanking it. Time your visit for the <strong>top-of-the-hour honor guard changing ceremony</strong> (now held in the outdoor plaza area, hourly until 5 PM). Free entry.</p>
-          <p>📸 <em>Photo spot:</em> shoot the arch framing the hall from dead center of the square; puddle reflections after rain are a bonus.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Ximen → CKS Memorial Hall (Green line, 2 stops)</span><span>💰 Free</span><span>⏱️ 60–75 min</span><span><a href="https://www.google.com/maps/search/Chiang+Kai-shek+Memorial+Hall" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">5:00 PM</span>
-        <div class="tl-card">
-          <h4>🌇 Taipei 101 at golden hour <span class="pill pill-teal">Sunset ~6:25 PM</span></h4>
-          <p>Ride to Taipei 101/World Trade Center station. Coffee or window-shop the luxury mall, then catch golden hour around the tower — the classic angle is from <strong>Xinyi Place / ATT 4 FUN side</strong>, or the LOVE sculpture corner. (You'll go <em>up</em> the tower tomorrow; today is for shooting it from below.)</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 CKS Memorial Hall → Taipei 101 (Red line direct, 7 stops)</span><span>💰 Free</span><span><a href="https://www.google.com/maps/search/Taipei+101" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">7:15 PM</span>
-        <div class="tl-card">
-          <h4>🏮 Raohe Street Night Market <span class="pill pill-coral">Must-eat</span></h4>
-          <p>One 600-meter lantern-lit lane beside the gorgeous Ciyou Temple — the most photogenic night market in Taipei. Eat your way down: <strong>Fuzhou Shizu pepper pork bun</strong> (Michelin Bib Gourmand, right at the temple-side entrance, ~NT$60), medicinal pork rib soup, grilled king oyster mushrooms, sweet potato balls, mochi.</p>
-          <p>📸 <em>Photo spot:</em> the neon market gate with Ciyou Temple's roof dragons behind it.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Taipei 101 → Daan → Songshan (transfer Red→Green... simplest: bus BL5 / taxi 15 min)</span><span>💰 NT$300–400 food budget</span><span><a href="https://www.google.com/maps/search/Raohe+Street+Night+Market" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">9:45 PM</span>
-        <div class="tl-card">
-          <h4>🌙 MRT home from Songshan</h4>
-          <p>Songshan station (Green line) is at the market's east end — one train straight back to Ximen, no transfers. Sleep well; tomorrow starts with a hike.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Songshan → Ximen (Green line direct, ~20 min)</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="map-embed reveal">
-      <iframe loading="lazy" src="https://maps.google.com/maps?q=Raohe+Street+Night+Market,Taipei&z=15&output=embed" title="Map of Raohe Night Market"></iframe>
-      <div class="map-caption">📍 Day 1 finale: Raohe Street Night Market & Ciyou Temple</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= DAY 2 ================= -->
-<section id="day2" class="alt">
-  <div class="container">
-    <div class="day-hero d2 reveal">
-      <div class="day-num">Day 02 · Wednesday, 19 August</div>
-      <h2>The Classics: Elephant Mountain to Ningxia Nights</h2>
-      <p>Taipei's postcard day — the skyline from above (twice), a creative park for café lovers, and the city's best old-school eating street.</p>
-      <div class="day-tags"><span>⛰️ Sunrise-ish hike</span><span>🏙️ 101 Observatory</span><span>🎨 Huashan 1914</span><span>🍢 Ningxia Night Market</span></div>
-    </div>
-
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <span class="tl-time">7:30 AM</span>
-        <div class="tl-card">
-          <h4>⛰️ Elephant Mountain (Xiangshan) <span class="pill pill-teal">Hidden-gem hour</span></h4>
-          <p>Go <em>early</em> — August heat is brutal by 10 AM. It's ~600 steep stone steps, 20–25 minutes to the famous <strong>six giant boulders</strong> with the head-on Taipei 101 view. Bring water; there are shaded rest platforms.</p>
-          <p>📸 <em>Photo spot:</em> climb onto the boulders for the classic "sitting above the skyline" shot — morning light hits the tower's face.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Ximen → Xiangshan (Green→Red at CKS... simplest: Blue line to Taipei City Hall + Red 1 stop; or door-to-door ~30 min)</span><span>💰 Free</span><span>⏱️ 2 hrs round trip</span><span><a href="https://www.google.com/maps/search/Xiangshan+Hiking+Trail+Taipei" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">10:15 AM</span>
-        <div class="tl-card">
-          <h4>🏯 Sun Yat-sen Memorial Hall</h4>
-          <p>One MRT stop away. A sweeping Tang-style roof, hourly honor-guard ceremony, and the <em>other</em> famous Taipei 101 angle — the tower rising over the memorial's eaves from the front lawn. Air-conditioned exhibits inside are a welcome heat break.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Xiangshan → Taipei 101 → walk, or Red line + 10-min walk</span><span>💰 Free</span><span><a href="https://www.google.com/maps/search/Sun+Yat-sen+Memorial+Hall+Taipei" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">11:45 AM</span>
-        <div class="tl-card">
-          <h4>🍜 Lunch at Din Tai Fung, Taipei 101 branch <span class="pill pill-coral">Bucket list</span></h4>
-          <p>The Michelin-starred home of xiao long bao, in the 101 mall basement. Get a queue number first, browse the mall, then feast: 10 pork XLB (~NT$250), truffle XLB if you're celebrating, shrimp fried rice. ~NT$500–650/person.</p>
-          <div class="tl-meta"><span>💰 ~NT$1,100 for two</span><span><a href="https://www.google.com/maps/search/Din+Tai+Fung+Taipei+101" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">1:30 PM</span>
-        <div class="tl-card">
-          <h4>🔭 Taipei 101 Observatory — worth it? <span class="pill pill-gold">Verdict: yes, if clear</span></h4>
-          <p><strong>Honest take:</strong> at NT$600 it's worth it on a clear day — the 37-second elevator, the 89F panorama and the massive gold tuned-mass damper are genuinely cool. If it's hazy or stormy, <strong>skip it</strong>; your Elephant Mountain photos this morning already beat a cloudy window. Decide at the ticket desk by looking up.</p>
-          <p><em>Skip-the-crowd tip:</em> weekday early afternoon (right now) has the shortest lines. Skyline 460 (101F open-air) is NT$980 — only for enthusiasts.</p>
-          <div class="tl-meta"><span>💰 NT$600/pax</span><span>⏱️ 60–90 min</span><span><a href="https://www.taipei-101.com.tw/en/observatory/ticket" target="_blank" rel="noopener">🎫 Official tickets</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">3:45 PM</span>
-        <div class="tl-card">
-          <h4>🎨 Huashan 1914 Creative Park <span class="pill pill-teal">Café heaven</span></h4>
-          <p>A 1914 wine factory reborn as Taipei's coolest creative village — indie design shops, exhibitions, ivy-covered brick walls. Perfect café stop: <strong>Fika Fika Café</strong> (Nordic roast champions, 5 min away) or the park's own courtyard cafés.</p>
-          <p>📸 <em>Photo spot:</em> the ivy wall and smokestack alley on the park's east side.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Taipei 101 → Zhongxiao Xinsheng (Red→Blue at Daan, ~20 min)</span><span>💰 Free entry</span><span><a href="https://www.google.com/maps/search/Huashan+1914+Creative+Park" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">6:30 PM</span>
-        <div class="tl-card">
-          <h4>🍢 Ningxia Night Market <span class="pill pill-coral">Locals' favorite</span></h4>
-          <p>Small, dense, and ranked by Taipei residents as the city's tastiest market. Non-negotiables: <strong>oyster omelet</strong> (Yuan Huan Pien, ~NT$80), <strong>Liu Yu Zai deep-fried taro balls</strong> (Bib Gourmand, NT$50), chicken rice, papaya milk. Arrive at opening to beat lines.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Zhongxiao Xinsheng → Zhongshan (Green line, then 10-min walk)</span><span>💰 NT$300–400 food budget</span><span><a href="https://www.google.com/maps/search/Ningxia+Night+Market" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">8:45 PM</span>
-        <div class="tl-card">
-          <h4>☕ Optional nightcap: Zhongshan's café lane</h4>
-          <p>You're beside Chifeng Street — vintage shops and late cafés. Or head straight home: tomorrow is the early day trip.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Zhongshan → Ximen (Green line direct, 2 stops)</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="map-embed reveal">
-      <iframe loading="lazy" src="https://maps.google.com/maps?q=Elephant+Mountain+Xiangshan+Trail,Taipei&z=14&output=embed" title="Map of Elephant Mountain trail"></iframe>
-      <div class="map-caption">📍 Day 2 opener: Xiangshan (Elephant Mountain) hiking trail</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= DAY 3 ================= -->
-<section id="day3">
-  <div class="container">
-    <div class="day-hero d3 reveal">
-      <div class="day-num">Day 03 · Thursday, 20 August</div>
-      <h2>Spirited Away: Shifen Lanterns & Jiufen Tea Houses</h2>
-      <p>The unmissable day trip — release a sky lantern on old railway tracks, chase a waterfall, then sip tea above the sea in a lantern-lit mountain town.</p>
-      <div class="day-tags"><span>🚂 Pingxi Line</span><span>🏮 Sky lantern</span><span>💦 Shifen Waterfall</span><span>🍵 A-Mei Tea House</span></div>
-    </div>
-
-    <div class="tip tip-blue reveal"><span class="ico">🧭</span><div><strong>Route logic:</strong> Shifen first, Jiufen second. Shifen Waterfall closes ~5 PM, while Jiufen is at its magical best when the red lanterns glow from ~5:30 PM. Doing it in this order means no backtracking and both places at their peak.</div></div>
-
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <span class="tl-time">7:45 AM</span>
-        <div class="tl-card">
-          <h4>🚆 TRA train: Taipei Main → Ruifang</h4>
-          <p>From Taipei Main Station's TRA level (not MRT), tap in with EasyCard on any northbound local/express train toward Su'ao or Hualien. Express ~40 min (NT$76), local ~50 min (NT$49). Aim for a departure between 7:45–8:15.</p>
-          <div class="tl-meta"><span>💰 NT$49–76/pax</span><span>⏱️ 40–50 min</span><span><a href="https://www.railway.gov.tw/tra-tip-web/tip?lang=EN_US" target="_blank" rel="noopener">🎫 TRA timetable</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">9:00 AM</span>
-        <div class="tl-card">
-          <h4>🚂 Pingxi Line: Ruifang → Shifen</h4>
-          <p>Transfer at Ruifang to the one-track heritage <strong>Pingxi Line</strong> (trains roughly hourly — check the return times posted on the platform and photograph the timetable). A gorgeous 30-minute river-gorge ride.</p>
-          <div class="tl-meta"><span>💰 NT$20 (or NT$80 day pass)</span><span>⏱️ 30 min</span><span><a href="https://www.google.com/maps/search/Shifen+Old+Street" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">9:40 AM</span>
-        <div class="tl-card">
-          <h4>🏮 Shifen Old Street — release your sky lantern <span class="pill pill-coral">Trip highlight</span></h4>
-          <p>Shops line the live railway track. Pick a lantern color by wish (red = luck, pink = love, yellow = money — a 4-color lantern covers everything, NT$200–250). Paint your wishes with brush ink, then the shop lights it and photographs the release <em>on the tracks</em> for you — they're pros at this.</p>
-          <p>📸 <em>Photo spot:</em> lantern rising with the old street receding behind; and the suspension bridge over Keelung River. Step off when the train bell rings!</p>
-          <div class="tl-meta"><span>💰 NT$200–250/lantern</span><span>⏱️ ~1 hr with snacks</span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">11:00 AM</span>
-        <div class="tl-card">
-          <h4>💦 Shifen Waterfall — "Little Niagara of Taiwan"</h4>
-          <p>A shaded 20–25 min walk from the old street (or NT$50 shuttle). The 40-m-wide cascade curtain is Taiwan's broadest waterfall; viewing platforms give three angles. Free entry. Grab a <strong>grilled sausage or peanut ice cream roll</strong> from the stalls on the way back.</p>
-          <div class="tl-meta"><span>💰 Free</span><span>⏱️ 1.5 hrs round trip</span><span><a href="https://www.google.com/maps/search/Shifen+Waterfall" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">1:15 PM</span>
-        <div class="tl-card">
-          <h4>🚌 Shifen → Jiufen (via Ruifang)</h4>
-          <p>Pingxi Line back to Ruifang (NT$20, 30 min), then <strong>bus 788 or 825/827</strong> from the stop across Ruifang Station up the mountain to Jiufen Old Street (NT$15, 15–20 min). <em>Shortcut option:</em> fixed-fare taxi Shifen→Jiufen direct, NT$800–1,000 per car — worth it if a train is 40+ minutes away.</p>
-          <div class="tl-meta"><span>💰 NT$35 by rail+bus</span><span>⏱️ ~1 hr total</span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">2:45 PM</span>
-        <div class="tl-card">
-          <h4>⛰️ Jiufen Old Street — eat first, shop deep</h4>
-          <p>Enter at the 7-Eleven mouth of <strong>Jishan Street</strong> and graze: <strong>Grandma Lai's taro balls</strong> (warm or iced, NT$50 — eat them on the terrace overlooking the sea), <strong>A-Zhu peanut ice cream roll</strong> (NT$50), fish balls, ocarina shops, tea sets. The alleys reward wandering.</p>
-          <div class="tl-meta"><span>💰 NT$200–300 grazing</span><span><a href="https://www.google.com/maps/search/Jiufen+Old+Street" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">4:30 PM</span>
-        <div class="tl-card">
-          <h4>🍵 A-Mei Tea House — golden hour tea <span class="pill pill-gold">Iconic</span></h4>
-          <p>The lantern-covered tea house on Shuqi Road that every photo of Jiufen features. A traditional gongfu tea set with mountain-and-sea views runs ~NT$300/person (tea leaves take-home included) — settle onto the terrace and stay as the lanterns switch on around 5:30. <em>Quieter alternative:</em> Jiufen Teahouse or Siidcha.</p>
-          <p>📸 <em>Photo spots:</em> (1) the <strong>Shuqi Road stone stairs</strong> facing A-Mei's lantern wall at blue hour — the "Spirited Away" shot; (2) the sea-view balcony at Shengping Theater.</p>
-          <div class="tl-meta"><span>💰 ~NT$600 for two</span><span><a href="https://www.google.com/maps/search/Amei+Tea+House+Jiufen" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">6:45 PM</span>
-        <div class="tl-card">
-          <h4>🚌 Down the mountain: bus 1062 straight to Taipei</h4>
-          <p>Board the <strong>Keelung Bus 1062</strong> from Jiufen's main road directly to Zhongxiao Fuxing MRT in Taipei (NT$102 with EasyCard, ~70–80 min). Get in line early — evening queues form. <em>Alternative:</em> bus 788 down to Ruifang + TRA train back.</p>
-          <div class="tl-meta"><span>💰 NT$102/pax</span><span>⏱️ ~75 min</span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">8:30 PM</span>
-        <div class="tl-card">
-          <h4>🍲 Late dinner back in Taipei: beef noodles</h4>
-          <p>You'll land at Zhongxiao Fuxing — perfect for <strong>Lin Dong Fang beef noodles</strong> (open till late, NT$180–260 a bowl, add the housemade chili butter). Then Blue line home to Ximen.</p>
-          <div class="tl-meta"><span class="mrt-route">🚇 Zhongxiao Fuxing → Ximen (Blue line direct)</span><span>💰 ~NT$500 for two</span><span><a href="https://www.google.com/maps/search/Lin+Dong+Fang+Beef+Noodle" target="_blank" rel="noopener">📍 Map</a></span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="map-embed reveal">
-      <iframe loading="lazy" src="https://maps.google.com/maps?q=Jiufen+Old+Street&z=13&output=embed" title="Map of Jiufen"></iframe>
-      <div class="map-caption">📍 Day 3: Jiufen — with Shifen 20 km west along the Pingxi valley</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= DAY 4 ================= -->
-<section id="day4" class="alt">
-  <div class="container">
-    <div class="day-hero d4 reveal">
-      <div class="day-num">Day 04 · Friday, 21 August</div>
-      <h2>One Last Breakfast, Then Home</h2>
-      <p>A 10:20 AM international departure means a disciplined morning — here's the exact clock to follow.</p>
-      <div class="day-tags"><span>🛫 TPE 10:20 AM</span><span>🚄 Airport MRT Express</span><span>🥐 Breakfast plan</span></div>
-    </div>
-
-    <div class="timeline reveal">
-      <div class="tl-item">
-        <span class="tl-time">6:00 AM</span>
-        <div class="tl-card">
-          <h4>⏰ Wake, final pack, check out</h4>
-          <p>Pack the night before. Leave the key per host instructions and photograph the room (deposit protection).</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">6:30 AM</span>
-        <div class="tl-card">
-          <h4>🚶 Leave the Airbnb → Taipei Main Station</h4>
-          <p>From Ximending it's a 10-min walk or one MRT stop to Taipei Main. Follow the purple <strong>Airport MRT (A1)</strong> signs — the terminal is west of the main hall (allow 10 min of walking inside the station). <em>Bonus:</em> many airlines offer <strong>in-town check-in at A1</strong> (bag drop up to 3 hrs before departure) — if yours participates, drop bags here and fly through the airport.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">7:00 AM</span>
-        <div class="tl-card">
-          <h4>🚄 Airport MRT Express to Terminal</h4>
-          <p>Take the purple <strong>Express train</strong> (not Commuter) — 36–39 min to the terminals, every ~15 min from ~6:00 AM. NT$150 with EasyCard. You'll arrive at the airport ~7:40 AM.</p>
-          <div class="tl-meta"><span>💰 NT$150/pax</span><span>⏱️ 36–39 min</span><span><a href="https://www.tymetro.com.tw/tymetro-new/en/" target="_blank" rel="noopener">🚇 Timetable</a></span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">7:45 AM</span>
-        <div class="tl-card">
-          <h4>🛄 Airport check-in — 2.5 hrs before</h4>
-          <p>Counters for a 10:20 flight open around 7:20–7:50. Check in, clear security and immigration by ~8:45, leaving a relaxed 60+ minutes at the gate.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">8:30 AM</span>
-        <div class="tl-card">
-          <h4>🥡 Breakfast options (pick one)</h4>
-          <p><strong>Fastest:</strong> grab a fan tuan (sticky rice roll) + soy milk from the breakfast shops near Taipei Main before boarding the MRT. <strong>Airside:</strong> Taoyuan's food courts do decent beef noodles and Din Tai Fung-style dumplings post-security. <strong>Last pasalubong:</strong> Chia Te and SunnyHills pineapple cakes are sold in the departure halls — buy here if you skipped them in town.</p>
-          <div class="tl-meta"><span>💰 NT$100–250/pax</span></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">10:20 AM</span>
-        <div class="tl-card">
-          <h4>🛫 Wheels up — TPE → MNL</h4>
-          <p>Land in Manila 1:05 PM with an EasyCard souvenir, a camera roll full of lanterns, and (statistically) 1.5 kg of pineapple cake.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="tip tip-red reveal"><span class="ico">🚨</span><div><strong>Fallback:</strong> if you somehow miss the ~7:15 Express, a taxi from Ximending to TPE is 40–50 min and NT$1,100–1,300 — expensive but flight-saving. Don't cut it closer than a 7:30 AM train.</div></div>
-  </div>
-</section>
-
-<!-- ================= FOOD GUIDE ================= -->
-<section id="food">
+<!-- ================= QUICK LINKS ================= -->
+<section>
   <div class="container">
     <div class="reveal">
-      <div class="section-kicker">Eat Everything</div>
-      <h2 class="section-title">The Taipei Food Hit-List</h2>
-      <p class="section-sub">Nine things you must eat, and exactly where to eat them. Every spot below is either on your route or minutes off it.</p>
+      <div class="section-kicker">Everything Else</div>
+      <h2 class="section-title">Plan Like a Pro</h2>
+      <p class="section-sub">The rest of the planner — accommodation picks, the food hit-list, transit decoded, the full budget and pre-trip essentials.</p>
     </div>
-    <div class="card-grid">
-      <div class="card food-card reveal"><div class="card-banner g-teal">🥟</div><div class="card-body"><h3>Xiao Long Bao</h3>
-        <div class="food-spot"><strong>Din Tai Fung</strong> — Taipei 101 B1 <div class="where">Michelin-starred original chain · Day 2 lunch</div><div class="food-price">~NT$250 / 10 pcs</div></div>
-        <div class="food-spot"><strong>Hangzhou Xiaolongbao</strong> — near CKS Memorial <div class="where">Locals' half-price favorite, Bib Gourmand</div><div class="food-price">~NT$140 / 8 pcs</div></div></div></div>
-      <div class="card food-card reveal"><div class="card-banner g-coral">🍜</div><div class="card-body"><h3>Beef Noodles</h3>
-        <div class="food-spot"><strong>Lin Dong Fang</strong> — Zhongxiao Fuxing <div class="where">Legendary broth + chili butter · Day 3 dinner</div><div class="food-price">NT$180–260</div></div>
-        <div class="food-spot"><strong>Yongkang Beef Noodle</strong> — Yongkang St <div class="where">The classic braised-beef benchmark since 1963</div><div class="food-price">NT$240–310</div></div></div></div>
-      <div class="card food-card reveal"><div class="card-banner g-gold">🧋</div><div class="card-body"><h3>Bubble Tea</h3>
-        <div class="food-spot"><strong>Chun Shui Tang</strong> — multiple branches <div class="where">The inventor of pearl milk tea (1980s)</div><div class="food-price">~NT$90</div></div>
-        <div class="food-spot"><strong>Xing Fu Tang</strong> — Ximending <div class="where">Brown-sugar boba, flame-torched cream</div><div class="food-price">~NT$75</div></div></div></div>
-      <div class="card food-card reveal"><div class="card-banner g-rose">🍗</div><div class="card-body"><h3>Fried Chicken</h3>
-        <div class="food-spot"><strong>Hot-Star Large Fried Chicken</strong> — Ximending <div class="where">The face-sized original crispy cutlet</div><div class="food-price">NT$90</div></div>
-        <div class="food-spot"><strong>Taiwanese popcorn chicken</strong> — any night market <div class="where">Basil-fried, five-spice dusted</div><div class="food-price">NT$60–80</div></div></div></div>
-      <div class="card food-card reveal"><div class="card-banner g-navy">🍳</div><div class="card-body"><h3>Oyster Omelet</h3>
-        <div class="food-spot"><strong>Yuan Huan Pien</strong> — Ningxia Night Market <div class="where">Plump oysters, perfect sticky-crisp edge · Day 2</div><div class="food-price">~NT$80</div></div></div></div>
-      <div class="card food-card reveal"><div class="card-banner g-plum">🥯</div><div class="card-body"><h3>Pepper Pork Bun</h3>
-        <div class="food-spot"><strong>Fuzhou Shizu Pepper Bun</strong> — Raohe entrance <div class="where">Bib Gourmand, baked in clay ovens · Day 1 night</div><div class="food-price">NT$60</div></div></div></div>
-      <div class="card food-card reveal"><div class="card-banner g-gold">🍍</div><div class="card-body"><h3>Pineapple Cake</h3>
-        <div class="food-spot"><strong>Chia Te Bakery</strong> — Nanjing E. Rd <div class="where">Perennial award winner; buy boxed for pasalubong</div><div class="food-price">NT$45/pc · NT$540/12</div></div>
-        <div class="food-spot"><strong>SunnyHills</strong> — Minsheng community <div class="where">All-butter, real pineapple fiber; free tea & cake tasting</div><div class="food-price">NT$620/10</div></div></div></div>
-      <div class="card food-card reveal"><div class="card-banner g-teal">🍡</div><div class="card-body"><h3>Mochi & Taro</h3>
-        <div class="food-spot"><strong>Grandma Lai's Taro Balls</strong> — Jiufen <div class="where">Chewy taro & sweet potato balls, sea view · Day 3</div><div class="food-price">NT$50</div></div>
-        <div class="food-spot"><strong>Fresh muah chee stalls</strong> — Raohe & Ningxia <div class="where">Peanut-dusted warm mochi, pounded to order</div><div class="food-price">NT$50</div></div></div></div>
-      <div class="card food-card reveal"><div class="card-banner g-coral">🥛</div><div class="card-body"><h3>Taiwanese Breakfast</h3>
-        <div class="food-spot"><strong>Fuhang Dou Jiang</strong> — Huashan Market 2F <div class="where">Charcoal shaobing + warm soy milk · Day 1 brunch</div><div class="food-price">~NT$120</div></div>
-        <div class="food-spot"><strong>Yonghe Doujiang Dawang</strong> — citywide <div class="where">24-hr no-queue backup, same classics</div><div class="food-price">~NT$90</div></div></div></div>
+    <div class="tile-grid">
+      <a class="tile reveal" href="stay.html"><span class="t-emoji">🏨</span><h3>Where to Stay</h3><p>5 hand-picked stays in the Ximending golden triangle, compared Airbnb-style.</p><span class="t-go">Compare stays →</span></a>
+      <a class="tile reveal" href="food.html"><span class="t-emoji">🍜</span><h3>Food Guide</h3><p>Nine must-eats and exactly where to get them — Michelin bibs to NT$50 street snacks.</p><span class="t-go">See the hit-list →</span></a>
+      <a class="tile reveal" href="transport.html"><span class="t-emoji">🚇</span><h3>Transport</h3><p>EasyCard, Airport MRT, buses and the full Jiufen rail loop, decoded with fares.</p><span class="t-go">Decode transit →</span></a>
+      <a class="tile reveal" href="budget.html"><span class="t-emoji">💰</span><h3>Budget</h3><p>The full 2-pax budget dashboard with breakdown chart and live currency converter.</p><span class="t-go">Crunch numbers →</span></a>
+      <a class="tile reveal" href="essentials.html"><span class="t-emoji">🎒</span><h3>Essentials</h3><p>Packing checklist, August weather, SIM cards, emergency numbers and Mandarin phrases.</p><span class="t-go">Get ready →</span></a>
+      <a class="tile reveal" href="about.html"><span class="t-emoji">🏮</span><h3>About</h3><p>How this itinerary was designed and the logic behind every routing decision.</p><span class="t-go">The story →</span></a>
     </div>
   </div>
 </section>
 
-<!-- ================= TRANSPORT ================= -->
-<section id="transport" class="alt">
+<!-- ================= CTA ================= -->
+<section class="alt">
   <div class="container">
-    <div class="reveal">
-      <div class="section-kicker">Getting Around</div>
-      <h2 class="section-title">Transport, Decoded</h2>
-      <p class="section-sub">Taipei has one of Asia's cleanest, easiest transit systems. One card runs everything.</p>
-    </div>
-    <div class="transport-grid">
-      <div class="transport-card reveal">
-        <div class="t-ico">💳</div><h3>EasyCard (悠遊卡)</h3>
-        <ul>
-          <li>Buy at any airport/MRT convenience store: <strong>NT$100</strong> for the card + top-up (start with NT$500 each).</li>
-          <li>Taps onto MRT, buses, TRA trains (incl. Ruifang!), YouBike and convenience stores.</li>
-          <li>20% off MRT fares vs single tickets + free bus↔MRT transfer discounts.</li>
-          <li>Top up in cash at any 7-Eleven or station machine.</li>
-        </ul>
+    <div class="cta-band reveal">
+      <h2 id="sleepsTitle">Soy milk & sky lanterns are waiting 🏮</h2>
+      <p>Start with the day-by-day plan, lock in the stay, and let the checklist handle the rest.</p>
+      <div class="hero-cta">
+        <a href="itinerary.html" class="btn btn-red">View Full Itinerary</a>
+        <a href="essentials.html" class="btn btn-ghost">Open Packing Checklist</a>
       </div>
-      <div class="transport-card reveal">
-        <div class="t-ico">🚄</div><h3>Airport MRT</h3>
-        <ul>
-          <li><strong>Express train:</strong> Taipei Main ↔ terminals in 36–39 min, NT$150.</li>
-          <li>Runs ~6:00 AM – 11:00 PM+ (not overnight — hence the Day 1 night-bus plan).</li>
-          <li>Purple line; Express has plush seats & luggage racks.</li>
-          <li>In-town check-in for select airlines at A1 Taipei Main.</li>
-        </ul>
-      </div>
-      <div class="transport-card reveal">
-        <div class="t-ico">🚇</div><h3>Taipei MRT</h3>
-        <ul>
-          <li>Fares NT$20–65 by distance; this itinerary averages NT$25/ride.</li>
-          <li>Lines are color-coded — you'll mostly use <strong>Blue (Bannan)</strong>, <strong>Green (Songshan-Xindian)</strong> and <strong>Red (Tamsui-Xinyi)</strong>.</li>
-          <li>Runs 6:00 AM – midnight, trains every 3–7 min.</li>
-          <li>No eating or drinking past the fare gates (fines are real!).</li>
-        </ul>
-      </div>
-      <div class="transport-card reveal">
-        <div class="t-ico">🚌</div><h3>Buses & Day-trip Rail</h3>
-        <ul>
-          <li>City buses NT$15/section, tap on <em>and</em> off with EasyCard.</li>
-          <li><strong>Bus 1819</strong>: 24-hr airport ↔ Taipei Main, NT$140.</li>
-          <li>Day 3: TRA to Ruifang NT$49–76 · Pingxi Line NT$20 · bus to Jiufen NT$15 · bus 1062 home NT$102.</li>
-          <li>Google Maps transit directions are excellent in Taipei.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="tip tip-green reveal"><span class="ico">💰</span><div><strong>Estimated total transport spend:</strong> ≈ <strong>NT$1,250 per person</strong> (₱2,410) for the whole trip — airport transfers NT$290, three days of MRT/bus ~NT$450, and the full Jiufen/Shifen loop ~NT$250, plus buffer. Load NT$600 onto each EasyCard on arrival and top up once mid-trip.</div></div>
-    <div class="map-embed reveal">
-      <iframe loading="lazy" src="https://maps.google.com/maps?q=Taipei+Main+Station&z=13&output=embed" title="Taipei Main Station transit hub"></iframe>
-      <div class="map-caption">📍 Taipei Main Station — where MRT, TRA, Airport MRT and buses meet · <a href="https://english.metro.taipei/cp.aspx?n=1BE0AF76C79F9A38" target="_blank" rel="noopener">official MRT route map ↗</a></div>
     </div>
   </div>
 </section>
 
-<!-- ================= BUDGET ================= -->
-<section id="budget">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-kicker">Money Matters</div>
-      <h2 class="section-title">The Full Budget</h2>
-      <p class="section-sub">For 2 adults, 4D3N, at ≈ NT$1 = ₱1.93 (July 2026 rate). Comfortable budget-to-mid-range — street food freely, one splurge meal, all attractions included.</p>
-    </div>
-    <div class="budget-wrap reveal">
-      <table class="budget-table">
-        <thead><tr><th>Category</th><th>TWD (2 pax)</th><th>PHP (2 pax)</th></tr></thead>
-        <tbody>
-          <tr><td class="cat">✈️ Flights <small>Already booked — not counted below</small></td><td class="twd">Booked ✓</td><td class="php">Booked ✓</td></tr>
-          <tr><td class="cat">🏠 Accommodation <small>3 nights × ~NT$2,800 (book Aug 17 night if checking in at 3 AM)</small></td><td class="twd">NT$8,400</td><td class="php">₱16,210</td></tr>
-          <tr><td class="cat">🚇 Transportation <small>Airport transfers, MRT, buses, Jiufen/Shifen loop</small></td><td class="twd">NT$2,500</td><td class="php">₱4,830</td></tr>
-          <tr><td class="cat">🍜 Food <small>Night markets + cafés + one Din Tai Fung splurge (~NT$1,080/pax/day)</small></td><td class="twd">NT$6,500</td><td class="php">₱12,550</td></tr>
-          <tr><td class="cat">🎟️ Attractions <small>101 Observatory ×2, sky lantern, tea house, misc.</small></td><td class="twd">NT$2,500</td><td class="php">₱4,830</td></tr>
-          <tr><td class="cat">🛍️ Shopping & pasalubong <small>Pineapple cakes, Ximending finds, tea</small></td><td class="twd">NT$6,000</td><td class="php">₱11,580</td></tr>
-          <tr><td class="cat">🆘 Emergency fund <small>Keep as cash buffer — taxis, rain plans, medical</small></td><td class="twd">NT$4,000</td><td class="php">₱7,720</td></tr>
-        </tbody>
-        <tfoot>
-          <tr><td>Total (excluding flights)</td><td class="twd">≈ NT$29,900</td><td class="php">≈ ₱57,720</td></tr>
-          <tr><td>Per person</td><td class="twd">≈ NT$14,950</td><td class="php">≈ ₱28,860</td></tr>
-        </tfoot>
-      </table>
-    </div>
+</main>
 
-    <div class="converter reveal">
-      <h3>💱 Quick Currency Converter</h3>
-      <div class="conv-row">
-        <div class="conv-field"><label>New Taiwan Dollar (TWD)</label><input type="number" id="twdInput" value="1000" min="0" /></div>
-        <div class="conv-swap">⇄</div>
-        <div class="conv-field"><label>Philippine Peso (PHP)</label><input type="number" id="phpInput" value="1930" min="0" /></div>
-      </div>
-      <div class="conv-note">Rate used: NT$1 = ₱1.93 (July 2026). Type in either box. Withdraw TWD from Taiwan ATMs with a Philippine card, or change PHP→TWD at Taoyuan arrivals (rates in Taiwan beat rates in Manila).</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ESSENTIALS ================= -->
-<section id="essentials" class="alt">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-kicker">Before You Go</div>
-      <h2 class="section-title">Travel Essentials</h2>
-      <p class="section-sub">August weather intel, an interactive packing list that remembers your checkmarks, and the numbers you hopefully never need.</p>
-    </div>
-
-    <div class="info-grid" style="margin-bottom:44px;">
-      <div class="info-card reveal">
-        <h3>🌦️ Taipei in August</h3>
-        <table>
-          <tr><td>Daily high / low</td><td>33°C / 27°C</td></tr>
-          <tr><td>Humidity</td><td>75–85% (sticky!)</td></tr>
-          <tr><td>Rain pattern</td><td>Short, hard afternoon thunderstorms</td></tr>
-          <tr><td>Typhoon risk</td><td>Peak season — monitor forecasts</td></tr>
-          <tr><td>Sunset</td><td>~6:25 PM</td></tr>
-        </table>
-        <p style="font-size:0.85rem;color:var(--ink-soft);margin-top:12px;">Strategy: outdoor sights before noon, malls/cafés/museums 2–4 PM, night markets after dark. Carry a folding umbrella <em>always</em>. Check the CWA app for typhoon bulletins the week before flying.</p>
-      </div>
-      <div class="info-card reveal">
-        <h3>🚨 Emergency Contacts</h3>
-        <table>
-          <tr><td>Police</td><td>110</td></tr>
-          <tr><td>Fire / Ambulance</td><td>119</td></tr>
-          <tr><td>24-hr Tourist Hotline (EN)</td><td>0800-011-765</td></tr>
-          <tr><td>MECO Taipei (PH office)</td><td>+886-2-2508-1719</td></tr>
-          <tr><td>Lost EasyCard / MRT info</td><td>02-218-12345</td></tr>
-        </table>
-        <p style="font-size:0.85rem;color:var(--ink-soft);margin-top:12px;">Taiwan is one of Asia's safest destinations. Convenience store staff will help you call any of these. Filipinos get visa-free entry (14 days) — verify current rules before flying.</p>
-      </div>
-      <div class="info-card reveal">
-        <h3>📱 Apps to Install</h3>
-        <ul>
-          <li><span>🗺️</span><span><strong>Google Maps</strong> — transit directions are flawless in Taipei</span></li>
-          <li><span>🚇</span><span><strong>Taipei Metro Go</strong> — official MRT app, fares & timetables</span></li>
-          <li><span>🚌</span><span><strong>BusTracker Taipei (Bus+)</strong> — live bus arrivals, crucial for Jiufen day</span></li>
-          <li><span>🎫</span><span><strong>Klook / KKday</strong> — discounted 101 tickets, eSIMs, day tours</span></li>
-          <li><span>🈶</span><span><strong>Google Translate</strong> — download offline Chinese (Traditional) + camera mode</span></li>
-          <li><span>🌀</span><span><strong>CWA Weather</strong> — official typhoon warnings</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 class="reveal" style="font-size:1.3rem;margin-bottom:20px;">🎒 Packing Checklist <span style="font-size:0.8rem;font-weight:600;color:var(--ink-faint);">(your ticks are saved on this device)</span></h3>
-    <div class="check-grid reveal">
-      <div class="check-group">
-        <h3>📄 Documents & Money</h3>
-        <label class="check-item"><input type="checkbox" data-check="c1"><span>Passport (6+ months validity)</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c2"><span>Taiwan entry requirements checked / travel authorization</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c3"><span>Flight e-tickets + Airbnb address in Chinese</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c4"><span>Travel insurance policy</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c5"><span>PHP cash to change + debit/credit cards</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c6"><span>Photocopies / cloud scans of documents</span></label>
-      </div>
-      <div class="check-group">
-        <h3>👕 August-proof Clothing</h3>
-        <label class="check-item"><input type="checkbox" data-check="c7"><span>Light, breathable tops (1–2/day — you will sweat)</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c8"><span>Comfortable walking shoes (broken in!)</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c9"><span>Folding umbrella or packable rain jacket</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c10"><span>Light layer for icy MRT/mall aircon</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c11"><span>Hat + sunglasses + sunscreen</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c12"><span>One nice outfit for tea house / photo days</span></label>
-      </div>
-      <div class="check-group">
-        <h3>🔌 Tech & Extras</h3>
-        <label class="check-item"><input type="checkbox" data-check="c13"><span>eSIM/SIM sorted (buy online pre-trip — cheaper)</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c14"><span>Power bank (essential for photo days)</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c15"><span>Type A/B plug devices (same as PH — no adapter needed, 110V)</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c16"><span>Camera + extra memory card</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c17"><span>Foldable extra bag for pasalubong</span></label>
-        <label class="check-item"><input type="checkbox" data-check="c18"><span>Meds, band-aids (night-market walking!), insect repellent</span></label>
-      </div>
-    </div>
-    <div class="check-progress reveal"><div class="check-progress-bar" id="checkBar"></div></div>
-    <div class="check-progress-label reveal" id="checkLabel">0 of 18 packed</div>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
 <footer>
-  <div class="foot-title">TAIWANDER ’26 🏮</div>
-  <p class="foot-sub">Manila → Taipei · 18–21 August 2026 · Built with love, soy milk and an unreasonable number of night-market snacks.</p>
-  <div class="foot-links">
-    <a href="#overview">Overview</a><a href="#stay">Stay</a><a href="#day1">Day 1</a><a href="#day2">Day 2</a><a href="#day3">Day 3</a><a href="#day4">Day 4</a><a href="#food">Food</a><a href="#budget">Budget</a>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="foot-title">TAI<span>WANDER</span> ’26 🏮</div>
+      <p>Manila → Taipei · 18–21 August 2026 · Built with love, soy milk and an unreasonable number of night-market snacks.</p>
+    </div>
+    <div class="foot-col"><h4>Plan</h4><ul>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="stay.html">Where to Stay</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="budget.html">Budget</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>The Days</h4><ul>
+      <li><a href="day1.html">Day 1 — Arrival & Raohe</a></li>
+      <li><a href="day2.html">Day 2 — The Classics</a></li>
+      <li><a href="day3.html">Day 3 — Jiufen & Shifen</a></li>
+      <li><a href="day4.html">Day 4 — Departure</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>Guides</h4><ul>
+      <li><a href="food.html">Food Guide</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="about.html">About this Planner</a></li>
+    </ul></div>
   </div>
-  <p class="foot-fine">Prices, timetables and listings are best-effort estimates as of July 2026 — always confirm live rates, opening days and transit schedules before departure. Not affiliated with any listed business.</p>
+  <div class="foot-bottom">Prices, timetables and listings are best-effort estimates as of July 2026 — always confirm live rates, opening days and transit schedules before departure. Not affiliated with any listed business.</div>
 </footer>
 
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>

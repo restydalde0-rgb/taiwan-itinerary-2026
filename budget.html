@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Budget — Taiwan 2026 Travel Planner</title>
+<meta name="description" content="The full 4D3N Taipei budget for two: breakdown chart, category table in TWD & PHP, daily spending estimates, shopping allowance and a live currency converter." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏮</text></svg>" />
+<script>try{var t=localStorage.getItem('taiwan2026-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">TAI<span>WANDER</span><small>’26</small></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="stay.html">Stay</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="budget.html" class="active">Budget</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <div class="crumb"><a href="index.html">Home</a> / <b>Budget</b></div>
+    <div class="section-kicker">Money Matters</div>
+    <h1>The Full Budget</h1>
+    <p class="lede">For 2 adults, 4D3N, at ≈ NT$1 = ₱1.93 (July 2026 rate). Comfortable budget-to-mid-range — street food freely, one splurge meal, all attractions included. Flights are already booked and excluded from every figure below.</p>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="container">
+
+    <!-- KPI row -->
+    <div class="kpi-row reveal">
+      <div class="kpi accent">
+        <div class="k-label">Total trip budget · 2 pax</div>
+        <div class="k-value"><span data-count="29900" data-prefix="NT$">NT$0</span></div>
+        <div class="k-sub">≈ ₱57,720 · excluding flights</div>
+      </div>
+      <div class="kpi accent2">
+        <div class="k-label">Per person</div>
+        <div class="k-value"><span data-count="14950" data-prefix="NT$">NT$0</span></div>
+        <div class="k-sub">≈ ₱28,860 for the whole trip</div>
+      </div>
+      <div class="kpi accent3">
+        <div class="k-label">Food per person / day</div>
+        <div class="k-value"><span data-count="1080" data-prefix="NT$">NT$0</span></div>
+        <div class="k-sub">night markets + cafés + one Din Tai Fung splurge</div>
+      </div>
+      <div class="kpi accent4">
+        <div class="k-label">Shopping allowance / person</div>
+        <div class="k-value"><span data-count="3000" data-prefix="NT$">NT$0</span></div>
+        <div class="k-sub">pineapple cakes, Ximending finds, tea</div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="viz-grid">
+      <div class="viz-card reveal">
+        <h3>Where the money goes</h3>
+        <div class="viz-sub">Share of the NT$29,900 total (2 pax) · hover a slice or row for detail · full figures in the table below</div>
+        <div class="donut-wrap">
+          <svg class="donut-svg" id="donutSvg" viewBox="0 0 200 200" role="img" aria-label="Budget breakdown donut chart — values listed in the legend and table below">
+            <text class="donut-center-n" x="100" y="98" text-anchor="middle">NT$29.9K</text>
+            <text class="donut-center-l" x="100" y="118" text-anchor="middle">Total · 2 pax</text>
+          </svg>
+          <ul class="donut-legend" id="donutLegend">
+            <li data-value="8400" data-color="--c1"><span class="sw" style="background:var(--c1)"></span><span class="nm">🏠 Accommodation</span><span class="val">NT$8,400</span><span class="pct"></span></li>
+            <li data-value="6500" data-color="--c2"><span class="sw" style="background:var(--c2)"></span><span class="nm">🍜 Food</span><span class="val">NT$6,500</span><span class="pct"></span></li>
+            <li data-value="6000" data-color="--c3"><span class="sw" style="background:var(--c3)"></span><span class="nm">🛍️ Shopping</span><span class="val">NT$6,000</span><span class="pct"></span></li>
+            <li data-value="4000" data-color="--c4"><span class="sw" style="background:var(--c4)"></span><span class="nm">🆘 Emergency fund</span><span class="val">NT$4,000</span><span class="pct"></span></li>
+            <li data-value="2500" data-color="--c5"><span class="sw" style="background:var(--c5)"></span><span class="nm">🚇 Transportation</span><span class="val">NT$2,500</span><span class="pct"></span></li>
+            <li data-value="2500" data-color="--c6"><span class="sw" style="background:var(--c6)"></span><span class="nm">🎟️ Attractions</span><span class="val">NT$2,500</span><span class="pct"></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="viz-card reveal">
+        <h3>Daily on-the-ground spend</h3>
+        <div class="viz-sub">Estimated per person, from the itinerary's own line items (food + transport + attractions; shopping excluded)</div>
+        <div class="hbars">
+          <div class="hbar">
+            <div class="hb-head"><span class="n">Day 1 · Arrival & Raohe</span><span class="v">≈ NT$800</span></div>
+            <div class="hb-track"><div class="hb-fill" data-width="47"></div></div>
+            <div class="hb-note">Bus 1819, brunch, night market grazing — the cheap day</div>
+          </div>
+          <div class="hbar">
+            <div class="hb-head"><span class="n">Day 2 · The Classics</span><span class="v">≈ NT$1,700</span></div>
+            <div class="hb-track"><div class="hb-fill" data-width="100"></div></div>
+            <div class="hb-note">Din Tai Fung + 101 Observatory — the splurge day</div>
+          </div>
+          <div class="hbar">
+            <div class="hb-head"><span class="n">Day 3 · Jiufen & Shifen</span><span class="v">≈ NT$1,250</span></div>
+            <div class="hb-track"><div class="hb-fill" data-width="74"></div></div>
+            <div class="hb-note">Rail loop, sky lantern, tea house, beef noodles</div>
+          </div>
+          <div class="hbar">
+            <div class="hb-head"><span class="n">Day 4 · Departure</span><span class="v">≈ NT$350</span></div>
+            <div class="hb-track"><div class="hb-fill" data-width="21"></div></div>
+            <div class="hb-note">Airport MRT Express + one last breakfast</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full table -->
+    <div class="budget-wrap reveal">
+      <div class="budget-scroll">
+        <table class="budget-table">
+          <thead><tr><th>Category</th><th>TWD (2 pax)</th><th>PHP (2 pax)</th></tr></thead>
+          <tbody>
+            <tr><td class="cat">✈️ Flights <small>Already booked — not counted below</small></td><td class="twd">Booked ✓</td><td class="php">Booked ✓</td></tr>
+            <tr><td class="cat">🏠 Accommodation <small>3 nights × ~NT$2,800 (book Aug 17 night if checking in at 3 AM)</small></td><td class="twd">NT$8,400</td><td class="php">₱16,210</td></tr>
+            <tr><td class="cat">🚇 Transportation <small>Airport transfers, MRT, buses, Jiufen/Shifen loop</small></td><td class="twd">NT$2,500</td><td class="php">₱4,830</td></tr>
+            <tr><td class="cat">🍜 Food <small>Night markets + cafés + one Din Tai Fung splurge (~NT$1,080/pax/day)</small></td><td class="twd">NT$6,500</td><td class="php">₱12,550</td></tr>
+            <tr><td class="cat">🎟️ Attractions <small>101 Observatory ×2, sky lantern, tea house, misc.</small></td><td class="twd">NT$2,500</td><td class="php">₱4,830</td></tr>
+            <tr><td class="cat">🛍️ Shopping & pasalubong <small>Pineapple cakes, Ximending finds, tea</small></td><td class="twd">NT$6,000</td><td class="php">₱11,580</td></tr>
+            <tr><td class="cat">🆘 Emergency fund <small>Keep as cash buffer — taxis, rain plans, medical</small></td><td class="twd">NT$4,000</td><td class="php">₱7,720</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td>Total (excluding flights)</td><td class="twd">≈ NT$29,900</td><td class="php">≈ ₱57,720</td></tr>
+            <tr><td>Per person</td><td class="twd">≈ NT$14,950</td><td class="php">≈ ₱28,860</td></tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Converter -->
+    <div class="converter reveal">
+      <h3>💱 Quick Currency Converter</h3>
+      <div class="conv-row">
+        <div class="conv-field"><label for="twdInput">New Taiwan Dollar (TWD)</label><input type="number" id="twdInput" value="1000" min="0" /></div>
+        <div class="conv-swap">⇄</div>
+        <div class="conv-field"><label for="phpInput">Philippine Peso (PHP)</label><input type="number" id="phpInput" value="1930" min="0" /></div>
+      </div>
+      <div class="conv-note">Rate used: NT$1 = ₱1.93 (July 2026). Type in either box. Withdraw TWD from Taiwan ATMs with a Philippine card, or change PHP→TWD at Taoyuan arrivals (rates in Taiwan beat rates in Manila).</div>
+    </div>
+
+    <div class="tip tip-amber reveal"><span class="ico">💡</span><div><strong>Cash strategy:</strong> Taipei is still cash-first at night markets and old streets. Keep the NT$4,000 emergency fund as physical cash, pay stays and malls by card, and reload the EasyCard instead of hoarding coins.</div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="foot-title">TAI<span>WANDER</span> ’26 🏮</div>
+      <p>Manila → Taipei · 18–21 August 2026 · Built with love, soy milk and an unreasonable number of night-market snacks.</p>
+    </div>
+    <div class="foot-col"><h4>Plan</h4><ul>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="stay.html">Where to Stay</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="budget.html">Budget</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>The Days</h4><ul>
+      <li><a href="day1.html">Day 1 — Arrival & Raohe</a></li>
+      <li><a href="day2.html">Day 2 — The Classics</a></li>
+      <li><a href="day3.html">Day 3 — Jiufen & Shifen</a></li>
+      <li><a href="day4.html">Day 4 — Departure</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>Guides</h4><ul>
+      <li><a href="food.html">Food Guide</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="about.html">About this Planner</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">Prices, timetables and listings are best-effort estimates as of July 2026 — always confirm live rates, opening days and transit schedules before departure. Not affiliated with any listed business.</div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>

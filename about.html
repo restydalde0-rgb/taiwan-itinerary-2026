@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Taiwan 2026 Travel Planner</title>
+<meta name="description" content="The story and design logic behind this 4D3N Taipei travel planner — who it's for, how the routes were built, and what to double-check before flying." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏮</text></svg>" />
+<script>try{var t=localStorage.getItem('taiwan2026-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">TAI<span>WANDER</span><small>’26</small></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="stay.html">Stay</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <div class="crumb"><a href="index.html">Home</a> / <b>About</b></div>
+    <div class="section-kicker">The Story</div>
+    <h1>About This Planner</h1>
+    <p class="lede">TAIWANDER ’26 is a personal travel planner for one very specific trip: two first-timers from Manila, four days and three nights in Taipei, 18–21 August 2026.</p>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="container">
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <h3>🧭 The Design Rules</h3>
+        <ul>
+          <li><span>1️⃣</span><span><strong>Zero backtracking.</strong> Each day owns one part of the map; no route is walked twice.</span></li>
+          <li><span>2️⃣</span><span><strong>Respect the August sun.</strong> Outdoor sights before noon, air-conditioning through the 2–4 PM thunderstorm window, night markets after dark.</span></li>
+          <li><span>3️⃣</span><span><strong>Protect the arrival.</strong> The 2 AM landing gets a full plan of its own — sleep is itinerary item #1.</span></li>
+          <li><span>4️⃣</span><span><strong>Food is the itinerary.</strong> Every meal slot has a named spot, a price, and a no-queue backup.</span></li>
+          <li><span>5️⃣</span><span><strong>MRT-first.</strong> Taxis are fallbacks, not plans — every leg lists its transit route and fare.</span></li>
+        </ul>
+      </div>
+      <div class="info-card reveal">
+        <h3>🗺️ Why These Places</h3>
+        <ul>
+          <li><span>🏮</span><span><strong>Raohe & Ningxia</strong> over bigger markets: the most photogenic and the most local-loved, respectively — quality over sprawl.</span></li>
+          <li><span>⛰️</span><span><strong>Elephant Mountain</strong> because the best view of Taipei 101 is free and 25 minutes up.</span></li>
+          <li><span>🚂</span><span><strong>Shifen before Jiufen</strong> because the waterfall closes ~5 PM and Jiufen's lanterns peak after 5:30 — the order is the trick.</span></li>
+          <li><span>🏙️</span><span><strong>Ximending base</strong> because the Airport MRT, three metro lines and two food streets converge there.</span></li>
+        </ul>
+      </div>
+      <div class="info-card reveal">
+        <h3>⚙️ How It's Built</h3>
+        <ul>
+          <li><span>🧱</span><span>Plain <strong>HTML, CSS and JavaScript</strong> — no frameworks, no build step, GitHub Pages-ready.</span></li>
+          <li><span>📱</span><span>Mobile-first: designed to be used on a phone, on the MRT, with one thumb.</span></li>
+          <li><span>🌙</span><span>Dark mode for night-market navigation — toggle it in the top bar.</span></li>
+          <li><span>💾</span><span>The packing checklist saves to your device; no accounts, no tracking.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip tip-amber reveal"><span class="ico">⚠️</span><div><strong>Honest disclaimer:</strong> prices, opening hours, timetables and listings across this site are best-effort estimates as of July 2026. Restaurants close, Airbnbs rotate, typhoons happen. Re-verify anything time-critical — especially the Day 4 airport clock and Taiwan's entry rules for Philippine passport holders — in the week before flying. This planner is not affiliated with any listed business.</div></div>
+
+    <div class="cta-band reveal">
+      <h2>Ready to wander?</h2>
+      <p>The plan is set, the maps are linked, and the lanterns are waiting.</p>
+      <div class="hero-cta">
+        <a href="itinerary.html" class="btn btn-red">Open the Itinerary</a>
+        <a href="essentials.html" class="btn btn-ghost">Start Packing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="foot-title">TAI<span>WANDER</span> ’26 🏮</div>
+      <p>Manila → Taipei · 18–21 August 2026 · Built with love, soy milk and an unreasonable number of night-market snacks.</p>
+    </div>
+    <div class="foot-col"><h4>Plan</h4><ul>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="stay.html">Where to Stay</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="budget.html">Budget</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>The Days</h4><ul>
+      <li><a href="day1.html">Day 1 — Arrival & Raohe</a></li>
+      <li><a href="day2.html">Day 2 — The Classics</a></li>
+      <li><a href="day3.html">Day 3 — Jiufen & Shifen</a></li>
+      <li><a href="day4.html">Day 4 — Departure</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>Guides</h4><ul>
+      <li><a href="food.html">Food Guide</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="about.html">About this Planner</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">Prices, timetables and listings are best-effort estimates as of July 2026 — always confirm live rates, opening days and transit schedules before departure. Not affiliated with any listed business.</div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>
