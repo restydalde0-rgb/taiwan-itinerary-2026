@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Day 4 — One Last Breakfast, Then Home · Taiwan 2026</title>
-<meta name="description" content="Day 4 departure plan: the exact clock to follow for a 10:20 AM flight out of Taoyuan — Airport MRT Express, in-town check-in, breakfast options and a taxi fallback." />
+<meta name="description" content="Day 4 departure plan with exact times and PHP-first costs: the clock to follow for a 10:20 AM flight — Airport MRT Express, in-town check-in, breakfast options and a taxi fallback." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏮</text></svg>" />
 <script>try{var t=localStorage.getItem('taiwan2026-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 </head>
-<body>
+<body class="has-daynav">
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -24,6 +24,7 @@
       <li><a href="food.html">Food</a></li>
       <li><a href="transport.html">Transport</a></li>
       <li><a href="budget.html">Budget</a></li>
+      <li><a href="summary.html">Summary</a></li>
       <li><a href="essentials.html">Essentials</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
@@ -41,6 +42,12 @@
     <h1>One Last Breakfast, Then Home</h1>
     <p class="lede">A 10:20 AM international departure means a disciplined morning — here's the exact clock to follow.</p>
     <div class="day-tags"><span>🛫 TPE 10:20 AM</span><span>🚄 Airport MRT Express</span><span>🥐 Breakfast plan</span></div>
+    <div class="trip-progress" aria-label="Trip progress: Day 4 of 4">
+      <a href="day1.html" class="done"><span class="dot">1</span></a><span class="bar"></span>
+      <a href="day2.html" class="done"><span class="dot">2</span></a><span class="bar"></span>
+      <a href="day3.html" class="done"><span class="dot">3</span></a><span class="bar"></span>
+      <a href="day4.html" class="current"><span class="dot">4</span><span class="lbl">DEPARTURE</span></a>
+    </div>
   </div>
 </header>
 
@@ -49,12 +56,14 @@
 <section style="padding-top:0;">
   <div class="container">
     <div class="glance">
-      <div class="glance-cell"><div class="k">Est. cost / person</div><div class="v">≈ NT$250–400</div></div>
+      <div class="glance-cell"><div class="k">Est. cost / person</div><div class="v"><span class="money" data-twd="300"></span></div></div>
       <div class="glance-cell"><div class="k">Main transport</div><div class="v">Airport MRT Express (purple)</div></div>
+      <div class="glance-cell"><div class="k">Total travel time</div><div class="v">~70 min door → terminal</div></div>
       <div class="glance-cell"><div class="k">Wake-up call</div><div class="v">6:00 AM sharp</div></div>
-      <div class="glance-cell"><div class="k">At the airport by</div><div class="v">~7:40 AM (2.5 hrs before)</div></div>
       <div class="glance-cell"><div class="k">Lands in Manila</div><div class="v">1:05 PM</div></div>
     </div>
+
+    <div class="tip tip-blue reveal"><span class="ico">🧭</span><div><strong>The math behind the clock:</strong> international check-in wants you at TPE ~2.5 hrs early (7:40 AM). The Express train takes ~36 min, and the walk to the A1 platform inside Taipei Main takes 10 more. Working backwards from 7:40 gives a 6:30 departure from the apartment — with a 30-minute cushion already built in.</div></div>
 
     <h3 class="reveal" style="font-size:1.3rem;margin:10px 0 20px;">⏱️ The Timeline</h3>
     <div class="timeline reveal">
@@ -66,18 +75,21 @@
         </div>
       </div>
       <div class="tl-item">
-        <span class="tl-time">6:30 AM</span>
+        <span class="tl-time">6:30 AM <span class="tl-depart">🚪 Leave apartment</span></span>
         <div class="tl-card">
-          <h4>🚶 Leave the Airbnb → Taipei Main Station</h4>
-          <p>From Ximending it's a 10-min walk or one MRT stop to Taipei Main. Follow the purple <strong>Airport MRT (A1)</strong> signs — the terminal is west of the main hall (allow 10 min of walking inside the station). <em>Bonus:</em> many airlines offer <strong>in-town check-in at A1</strong> (bag drop up to 3 hrs before departure) — if yours participates, drop bags here and fly through the airport.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">7:00 AM</span>
-        <div class="tl-card">
-          <h4>🚄 Airport MRT Express to Terminal</h4>
-          <p>Take the purple <strong>Express train</strong> (not Commuter) — 36–39 min to the terminals, every ~15 min from ~6:00 AM. NT$150 with EasyCard. You'll arrive at the airport ~7:40 AM.</p>
-          <div class="tl-meta"><span>💰 NT$150/pax</span><span>⏱️ 36–39 min</span><span><a href="https://www.tymetro.com.tw/tymetro-new/en/" target="_blank" rel="noopener">🚇 Timetable</a></span></div>
+          <h4>🚶 Walk to Taipei Main → Airport MRT (A1)</h4>
+          <div class="commute">
+            <div class="c-head"><span class="c-title">🚄 Apartment → Taoyuan Airport</span></div>
+            <ol>
+              <li><span class="ci">🚶</span><span><strong>6:30</strong> — walk ~10 min to <strong>Taipei Main Station</strong>.</span></li>
+              <li><span class="ci">🧭</span><span><strong>6:40</strong> — follow the purple <strong>Airport MRT (A1)</strong> signs — the terminal is west of the main hall; allow 10 min of indoor walking.</span></li>
+              <li><span class="ci">🛄</span><span><strong>6:50</strong> — <em>bonus:</em> many airlines offer <strong>in-town check-in at A1</strong> (bag drop up to 3 hrs before departure). If yours participates, drop bags here and fly through the airport.</span></li>
+              <li><span class="ci">🚄</span><span><strong>7:00</strong> — board the <strong><span class="line-dot purple"></span>Express train</strong> (not Commuter) — every ~15 min from ~6:00 AM. Ride 36–39 min.</span></li>
+              <li><span class="ci">🛬</span><span><strong>~7:40</strong> — arrive at your terminal (check T1 vs T2 for your airline).</span></li>
+            </ol>
+            <div class="c-totals"><span>⏱️ Est. total: ~70 min door-to-terminal</span><span>💰 Fare: <span class="money inline" data-twd="150" data-suffix="/ pax"></span></span><span>📏 ~40 km</span></div>
+          </div>
+          <div class="tl-meta"><span><a href="https://www.tymetro.com.tw/tymetro-new/en/" target="_blank" rel="noopener">🚇 Airport MRT timetable</a></span></div>
         </div>
       </div>
       <div class="tl-item">
@@ -91,8 +103,8 @@
         <span class="tl-time">8:30 AM</span>
         <div class="tl-card">
           <h4>🥡 Breakfast options (pick one)</h4>
-          <p><strong>Fastest:</strong> grab a fan tuan (sticky rice roll) + soy milk from the breakfast shops near Taipei Main before boarding the MRT. <strong>Airside:</strong> Taoyuan's food courts do decent beef noodles and Din Tai Fung-style dumplings post-security. <strong>Last pasalubong:</strong> Chia Te and SunnyHills pineapple cakes are sold in the departure halls — buy here if you skipped them in town.</p>
-          <div class="tl-meta"><span>💰 NT$100–250/pax</span></div>
+          <p><strong>Fastest:</strong> a fan tuan + soy milk from the shops near Taipei Main before boarding (~<span class="money inline" data-twd="80"></span>). <strong>Airside:</strong> Taoyuan's food courts do decent beef noodles and dumplings post-security (~<span class="money inline" data-twd="150" data-twd-max="250"></span>). <strong>Last pasalubong:</strong> Chia Te and SunnyHills pineapple cakes are sold in the departure halls — buy here if you skipped them in town (from the shopping allowance, ~<span class="money inline" data-twd="540" data-suffix="/ box of 12"></span>).</p>
+          <div class="tl-meta"><span>💰 <span class="money inline" data-twd="100" data-twd-max="250" data-suffix="/ pax"></span></span></div>
         </div>
       </div>
       <div class="tl-item">
@@ -104,11 +116,29 @@
       </div>
     </div>
 
-    <div class="tip tip-red reveal"><span class="ico">🚨</span><div><strong>Fallback:</strong> if you somehow miss the ~7:15 Express, a taxi from Ximending to TPE is 40–50 min and NT$1,100–1,300 — expensive but flight-saving. Don't cut it closer than a 7:30 AM train.</div></div>
+    <div class="tip tip-red reveal"><span class="ico">🚨</span><div><strong>Fallback:</strong> if you somehow miss the ~7:15 Express, a taxi from Ximending to TPE is 40–50 min and <span class="money inline" data-twd="1100" data-twd-max="1300" data-suffix="/ car"></span> — expensive but flight-saving. Don't cut it closer than a 7:30 AM train.</div></div>
+
+    <!-- Daily expense summary -->
+    <div class="expense-wrap reveal">
+      <h3>💵 Day 4 Expense Summary <small style="font-weight:600;color:var(--ink-faint);">(per person, estimates)</small></h3>
+      <div class="exp-sub">PHP first, TWD underneath · totals computed automatically at NT$1 = ₱1.93</div>
+      <table class="expense-table">
+        <tbody>
+          <tr><td><span class="item">🥐 Breakfast</span><span class="det">Station grab-and-go or airport food court</span></td><td><span class="money" data-twd="120"></span></td></tr>
+          <tr><td><span class="item">🚄 Transportation</span><span class="det">Airport MRT Express</span></td><td><span class="money" data-twd="150"></span></td></tr>
+          <tr><td><span class="item">🥤 Coffee & snacks</span><span class="det">Gate coffee / water</span></td><td><span class="money" data-twd="30"></span></td></tr>
+          <tr><td><span class="item">🍽️ Lunch & dinner</span><span class="det">In-flight / back home</span></td><td><span class="money" data-twd="0"></span></td></tr>
+          <tr><td><span class="item">🎟️ Entrance fees</span><span class="det">None today</span></td><td><span class="money" data-twd="0"></span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>Total for Day 4</td><td><span class="money" data-total></span></td></tr>
+        </tfoot>
+      </table>
+    </div>
 
     <div class="day-pager">
       <a href="day3.html"><span class="dir">← Previous day</span><div class="ttl">Day 3 — Jiufen & Shifen</div></a>
-      <a href="itinerary.html" class="next"><span class="dir">Back to →</span><div class="ttl">Full Itinerary</div></a>
+      <a href="summary.html" class="next"><span class="dir">Wrap up →</span><div class="ttl">Trip Summary & Grand Total</div></a>
     </div>
   </div>
 </section>
@@ -126,6 +156,7 @@
       <li><a href="stay.html">Where to Stay</a></li>
       <li><a href="transport.html">Transport</a></li>
       <li><a href="budget.html">Budget</a></li>
+      <li><a href="summary.html">Trip Summary</a></li>
     </ul></div>
     <div class="foot-col"><h4>The Days</h4><ul>
       <li><a href="day1.html">Day 1 — Arrival & Raohe</a></li>
@@ -141,6 +172,14 @@
   </div>
   <div class="foot-bottom">Prices, timetables and listings are best-effort estimates as of July 2026 — always confirm live rates, opening days and transit schedules before departure. Not affiliated with any listed business.</div>
 </footer>
+
+<div class="daynav" aria-label="Day navigation">
+  <div class="dn-inner">
+    <a href="day3.html">← Day 3</a>
+    <a href="itinerary.html" class="dn-home">Day 4 of 4</a>
+    <a href="summary.html">Summary →</a>
+  </div>
+</div>
 
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 <script src="js/main.js"></script>

@@ -24,6 +24,7 @@
       <li><a href="food.html">Food</a></li>
       <li><a href="transport.html" class="active">Transport</a></li>
       <li><a href="budget.html">Budget</a></li>
+      <li><a href="summary.html">Summary</a></li>
       <li><a href="essentials.html">Essentials</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
@@ -39,7 +40,7 @@
     <div class="crumb"><a href="index.html">Home</a> / <b>Transport</b></div>
     <div class="section-kicker">Getting Around</div>
     <h1>Transport, Decoded</h1>
-    <p class="lede">Taipei has one of Asia's cleanest, easiest transit systems. One card runs everything — here's every mode you'll touch on this trip, with fares.</p>
+    <p class="lede">Taipei has one of Asia's cleanest, easiest transit systems. One card runs everything — here's every mode you'll touch on this trip, with fares in PHP first (TWD underneath). Step-by-step routes for every single leg live on each <a href="itinerary.html" style="color:var(--red);font-weight:700;">day page</a>.</p>
   </div>
 </header>
 
@@ -51,7 +52,7 @@
       <div class="transport-card reveal">
         <div class="t-ico">💳</div><h3>EasyCard (悠遊卡)</h3>
         <ul>
-          <li>Buy at any airport/MRT convenience store: <strong>NT$100</strong> for the card + top-up (start with NT$500 each).</li>
+          <li>Buy at any airport/MRT convenience store: <span class="money inline" data-twd="100"></span> for the card + top-up (start with <span class="money inline" data-twd="500"></span> each).</li>
           <li>Taps onto MRT, buses, TRA trains (incl. Ruifang!), YouBike and convenience stores.</li>
           <li>20% off MRT fares vs single tickets + free bus↔MRT transfer discounts.</li>
           <li>Top up in cash at any 7-Eleven or station machine.</li>
@@ -60,7 +61,7 @@
       <div class="transport-card reveal">
         <div class="t-ico">🚄</div><h3>Airport MRT</h3>
         <ul>
-          <li><strong>Express train:</strong> Taipei Main ↔ terminals in 36–39 min, NT$150.</li>
+          <li><strong>Express train:</strong> Taipei Main ↔ terminals in 36–39 min, <span class="money inline" data-twd="150"></span>.</li>
           <li>Runs ~6:00 AM – 11:00 PM+ (not overnight — hence the Day 1 night-bus plan).</li>
           <li>Purple line; Express has plush seats & luggage racks.</li>
           <li>In-town check-in for select airlines at A1 Taipei Main.</li>
@@ -69,7 +70,7 @@
       <div class="transport-card reveal">
         <div class="t-ico">🚇</div><h3>Taipei MRT</h3>
         <ul>
-          <li>Fares NT$20–65 by distance; this itinerary averages NT$25/ride.</li>
+          <li>Fares <span class="money inline" data-twd="20" data-twd-max="65"></span> by distance; this itinerary averages <span class="money inline" data-twd="25" data-suffix="/ ride"></span>.</li>
           <li>Lines are color-coded — you'll mostly use <strong>Blue (Bannan)</strong>, <strong>Green (Songshan-Xindian)</strong> and <strong>Red (Tamsui-Xinyi)</strong>.</li>
           <li>Runs 6:00 AM – midnight, trains every 3–7 min.</li>
           <li>No eating or drinking past the fare gates (fines are real!).</li>
@@ -78,18 +79,18 @@
       <div class="transport-card reveal">
         <div class="t-ico">🚌</div><h3>Buses & Day-trip Rail</h3>
         <ul>
-          <li>City buses NT$15/section, tap on <em>and</em> off with EasyCard.</li>
-          <li><strong>Bus 1819</strong>: 24-hr airport ↔ Taipei Main, NT$140.</li>
-          <li>Day 3: TRA to Ruifang NT$49–76 · Pingxi Line NT$20 · bus to Jiufen NT$15 · bus 1062 home NT$102.</li>
+          <li>City buses <span class="money inline" data-twd="15" data-suffix="/ section"></span>, tap on <em>and</em> off with EasyCard.</li>
+          <li><strong>Bus 1819</strong>: 24-hr airport ↔ Taipei Main, <span class="money inline" data-twd="140"></span>.</li>
+          <li>Day 3: TRA to Ruifang <span class="money inline" data-twd="49" data-twd-max="76"></span> · Pingxi Line <span class="money inline" data-twd="20"></span> · bus to Jiufen <span class="money inline" data-twd="15"></span> · bus 1062 home <span class="money inline" data-twd="102"></span>.</li>
           <li>Google Maps transit directions are excellent in Taipei.</li>
         </ul>
       </div>
       <div class="transport-card reveal">
         <div class="t-ico">🚕</div><h3>Taxis & Ride-hailing</h3>
         <ul>
-          <li>Yellow taxis are metered, honest and everywhere; flag-down starts around <strong>NT$85</strong>, most cross-town hops land at NT$150–250.</li>
+          <li>Yellow taxis are metered, honest and everywhere; flag-down starts around <span class="money inline" data-twd="85"></span>, most cross-town hops land at <span class="money inline" data-twd="150" data-twd-max="250"></span>.</li>
           <li><strong>Uber works in Taipei</strong> and shows the fare upfront — handy when you're tired of decoding bus stops.</li>
-          <li>Airport runs: Ximending ↔ TPE is 40–50 min, NT$1,100–1,300 — the Day 4 emergency fallback.</li>
+          <li>Airport runs: Ximending ↔ TPE is 40–50 min, <span class="money inline" data-twd="1100" data-twd-max="1300"></span> — the Day 4 emergency fallback.</li>
           <li>Show addresses in Chinese (screenshot your stay's listing) — most drivers speak little English.</li>
         </ul>
       </div>
@@ -97,14 +98,14 @@
         <div class="t-ico">🚲</div><h3>YouBike (bonus)</h3>
         <ul>
           <li>Taipei's shared bikes, docked at nearly every MRT exit — tap the same EasyCard.</li>
-          <li>Cheap (NT$10/30 min in the city) and lovely for riverside parks or Zhongshan's lanes.</li>
+          <li>Cheap (<span class="money inline" data-twd="10" data-suffix="/ 30 min"></span> in the city) and lovely for riverside parks or Zhongshan's lanes.</li>
           <li>Register the card once at a kiosk or via the YouBike app.</li>
           <li>Skip it in an August downpour — the MRT wins.</li>
         </ul>
       </div>
     </div>
 
-    <div class="tip tip-green reveal"><span class="ico">💰</span><div><strong>Estimated total transport spend:</strong> ≈ <strong>NT$1,250 per person</strong> (₱2,410) for the whole trip — airport transfers NT$290, three days of MRT/bus ~NT$450, and the full Jiufen/Shifen loop ~NT$250, plus buffer. Load NT$600 onto each EasyCard on arrival and top up once mid-trip.</div></div>
+    <div class="tip tip-green reveal"><span class="ico">💰</span><div><strong>Estimated total transport spend:</strong> ≈ <span class="money inline" data-twd="1250" data-suffix="/ person"></span> for the whole trip — airport transfers <span class="money inline" data-twd="290"></span>, three days of MRT/bus ~<span class="money inline" data-twd="450"></span>, and the full Jiufen/Shifen loop ~<span class="money inline" data-twd="250"></span>, plus buffer. Load <span class="money inline" data-twd="600"></span> onto each EasyCard on arrival and top up once mid-trip.</div></div>
   </div>
 </section>
 
@@ -124,20 +125,20 @@
           <div class="r-stop"><div class="r-name">A1 · Taipei Main Station <span class="fare">in-town check-in</span></div><div class="r-note">10-min walk inside the station from the MRT/TRA hall</div></div>
           <div class="r-stop"><div class="r-name">A3 · New Taipei Industrial Park</div><div class="r-note">Express stop — stay seated</div></div>
           <div class="r-stop"><div class="r-name">A8 · Chang Gung Memorial Hospital</div><div class="r-note">Express stop — stay seated</div></div>
-          <div class="r-stop"><div class="r-name">A12 · Airport Terminal 1 <span class="fare">NT$150</span></div><div class="r-note">36 min from A1</div></div>
+          <div class="r-stop"><div class="r-name">A12 · Airport Terminal 1 <span class="fare">₱290 (NT$150)</span></div><div class="r-note">36 min from A1</div></div>
           <div class="r-stop"><div class="r-name">A13 · Airport Terminal 2</div><div class="r-note">39 min from A1 · check which terminal your airline uses</div></div>
         </div>
       </div>
 
       <div class="route-box reveal">
         <h3>🚂 The Day 3 Loop (Jiufen & Shifen)</h3>
-        <div class="route-sub">TRA + heritage Pingxi Line + mountain buses · ≈ NT$250/person for the whole loop · EasyCard taps everything except the lantern.</div>
+        <div class="route-sub">TRA + heritage Pingxi Line + mountain buses · ≈ ₱483 (NT$250)/person for the whole loop · EasyCard taps everything except the lantern.</div>
         <div class="route blue">
           <div class="r-stop"><div class="r-name">Taipei Main Station (TRA level)</div><div class="r-note">Northbound local/express toward Su'ao or Hualien</div></div>
-          <div class="r-stop"><div class="r-name">Ruifang <span class="fare">NT$49–76</span></div><div class="r-note">Transfer to the one-track Pingxi Line — photograph the return timetable!</div></div>
-          <div class="r-stop"><div class="r-name">Shifen <span class="fare">NT$20</span></div><div class="r-note">Sky lantern on the tracks + waterfall walk, then Pingxi Line back to Ruifang</div></div>
-          <div class="r-stop"><div class="r-name">Jiufen Old Street <span class="fare">bus NT$15</span></div><div class="r-note">Bus 788 / 825 / 827 up the mountain from across Ruifang Station</div></div>
-          <div class="r-stop"><div class="r-name">Zhongxiao Fuxing MRT, Taipei <span class="fare">NT$102</span></div><div class="r-note">Keelung Bus 1062 direct, ~75 min — queue early in the evening</div></div>
+          <div class="r-stop"><div class="r-name">Ruifang <span class="fare">₱95–147 (NT$49–76)</span></div><div class="r-note">Transfer to the one-track Pingxi Line — photograph the return timetable!</div></div>
+          <div class="r-stop"><div class="r-name">Shifen <span class="fare">₱39 (NT$20)</span></div><div class="r-note">Sky lantern on the tracks + waterfall walk, then Pingxi Line back to Ruifang</div></div>
+          <div class="r-stop"><div class="r-name">Jiufen Old Street <span class="fare">bus ₱29 (NT$15)</span></div><div class="r-note">Bus 788 / 825 / 827 up the mountain from across Ruifang Station</div></div>
+          <div class="r-stop"><div class="r-name">Zhongxiao Fuxing MRT, Taipei <span class="fare">₱197 (NT$102)</span></div><div class="r-note">Keelung Bus 1062 direct, ~75 min — queue early in the evening</div></div>
         </div>
       </div>
     </div>
@@ -162,6 +163,7 @@
       <li><a href="stay.html">Where to Stay</a></li>
       <li><a href="transport.html">Transport</a></li>
       <li><a href="budget.html">Budget</a></li>
+      <li><a href="summary.html">Trip Summary</a></li>
     </ul></div>
     <div class="foot-col"><h4>The Days</h4><ul>
       <li><a href="day1.html">Day 1 — Arrival & Raohe</a></li>

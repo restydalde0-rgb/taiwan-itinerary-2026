@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trip Summary — Taiwan 2026 Travel Planner</title>
+<meta name="description" content="The whole trip on one page: grand total in PHP and TWD, every cost category, day-by-day spend, averages per day and per person, and the pre-departure checklist of what's booked." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏮</text></svg>" />
+<script>try{var t=localStorage.getItem('taiwan2026-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">TAI<span>WANDER</span><small>’26</small></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="stay.html">Stay</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="summary.html" class="active">Summary</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <div class="crumb"><a href="index.html">Home</a> / <b>Summary</b></div>
+    <div class="section-kicker">The Whole Trip, One Page</div>
+    <h1>Trip Summary & Grand Total</h1>
+    <p class="lede">Everything rolled up: what's booked, what each category costs, what each day costs, and the one number to bring to the money changer. PHP first, TWD underneath, all computed live from a single NT$1 = ₱1.93 rate.</p>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="container">
+
+    <!-- GRAND TOTALS (computed by JS from the category table below) -->
+    <div class="kpi-row reveal">
+      <div class="kpi accent">
+        <div class="k-label">Grand total · 2 pax · excl. flights</div>
+        <div class="k-value"><span class="money big" data-grand></span></div>
+        <div class="k-sub">4 nights + 4 days, everything below included</div>
+      </div>
+      <div class="kpi accent2">
+        <div class="k-label">Per person</div>
+        <div class="k-value"><span class="money big" data-grand data-divide="2"></span></div>
+        <div class="k-sub">the number to budget per traveler</div>
+      </div>
+      <div class="kpi accent3">
+        <div class="k-label">Average per day · 2 pax</div>
+        <div class="k-value"><span class="money big" data-grand data-divide="4"></span></div>
+        <div class="k-sub">across 4 trip days</div>
+      </div>
+      <div class="kpi accent4">
+        <div class="k-label">Average per person / day</div>
+        <div class="k-value"><span class="money big" data-grand data-divide="8"></span></div>
+        <div class="k-sub">a good sanity check vs. other trips</div>
+      </div>
+    </div>
+
+    <!-- Flights -->
+    <div class="tip tip-green reveal"><span class="ico">✈️</span><div><strong>Flights: already booked ✓</strong> — MNL → TPE (17 Aug, 11:35 PM) and TPE → MNL (21 Aug, 10:20 AM). Airfare is <em>excluded</em> from every figure on this page since it's paid. If you want an all-in trip number, add what you actually paid for the two tickets.</div></div>
+
+    <!-- Category breakdown -->
+    <div class="expense-wrap reveal">
+      <h3>📦 Full Cost Breakdown <small style="font-weight:600;color:var(--ink-faint);">(2 travelers, estimates)</small></h3>
+      <div class="exp-sub">Category budgets are deliberately set a little above the day-by-day estimates — the slack is your freedom to say yes to things.</div>
+      <table class="expense-table">
+        <tbody>
+          <tr><td><span class="item">🏠 Accommodation</span><span class="det">4 nights (Aug 17–21) × <span class="money inline" data-twd="2600"></span> — <a href="stay.html" style="color:var(--red);font-weight:700;">the recommended apartment</a></span></td><td><span class="money" data-twd="10400"></span></td></tr>
+          <tr><td><span class="item">🚇 Transportation</span><span class="det">Airport transfers, all MRT/bus rides, the full Jiufen–Shifen rail loop</span></td><td><span class="money" data-twd="2500"></span></td></tr>
+          <tr><td><span class="item">🍜 Food</span><span class="det">Night markets, cafés, breakfasts + one Din Tai Fung splurge</span></td><td><span class="money" data-twd="6500"></span></td></tr>
+          <tr><td><span class="item">🎟️ Attractions</span><span class="det">101 Observatory ×2, sky lantern, A-Mei tea sets, misc.</span></td><td><span class="money" data-twd="2500"></span></td></tr>
+          <tr><td><span class="item">🛍️ Shopping allowance</span><span class="det">Pineapple cakes, Ximending finds, tea, pasalubong</span></td><td><span class="money" data-twd="6000"></span></td></tr>
+          <tr><td><span class="item">🆘 Emergency reserve</span><span class="det">Keep as physical cash — taxis, rain plans, medical</span></td><td><span class="money" data-twd="4000"></span></td></tr>
+          <tr><td><span class="item">🧯 Contingency fund</span><span class="det">Typhoon-delay buffer: an extra night + meals if flights slip</span></td><td><span class="money" data-twd="2000"></span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>Grand Total (excluding flights)</td><td><span class="money" data-total></span></td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Day-by-day -->
+    <div class="expense-wrap reveal" style="margin-top:28px;">
+      <h3>📅 Day-by-Day Spend <small style="font-weight:600;color:var(--ink-faint);">(per person, from each day's own expense table)</small></h3>
+      <div class="exp-sub">These itemized estimates sit inside the category budgets above — the gap between them is intentional buffer, not double-counting.</div>
+      <table class="expense-table" style="border-collapse:collapse;" data-nosum>
+        <tbody>
+          <tr><td><span class="item"><a href="day1.html" style="color:var(--ink);text-decoration:none;">Day 1 · Arrival, Ximending & Raohe →</a></span><span class="det">Cheapest day — everything is free entry</span></td><td><span class="money" data-twd="1345"></span></td></tr>
+          <tr><td><span class="item"><a href="day2.html" style="color:var(--ink);text-decoration:none;">Day 2 · The Classics →</a></span><span class="det">Splurge day — Din Tai Fung + Observatory</span></td><td><span class="money" data-twd="2185"></span></td></tr>
+          <tr><td><span class="item"><a href="day3.html" style="color:var(--ink);text-decoration:none;">Day 3 · Shifen & Jiufen →</a></span><span class="det">Rail loop, lantern, tea house, beef noodles</span></td><td><span class="money" data-twd="1605"></span></td></tr>
+          <tr><td><span class="item"><a href="day4.html" style="color:var(--ink);text-decoration:none;">Day 4 · Departure →</a></span><span class="det">One train, one breakfast, one flight</span></td><td><span class="money" data-twd="300"></span></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>On-the-ground total per person</td><td><span class="money" data-twd="5435"></span></td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- What's locked vs pending -->
+    <div class="reveal" style="margin-top:40px;">
+      <div class="section-kicker">Status Board</div>
+      <h2 class="section-title" style="font-size:1.6rem;">Booked vs. To-Do</h2>
+    </div>
+    <div class="option-grid reveal">
+      <div class="option">
+        <h4>✅ Locked in</h4>
+        <p>✈️ Flights MNL ⇄ TPE (17 & 21 Aug)<br>🗓️ Dates: 18–21 August 2026<br>🧭 Full day-by-day routing (this site)</p>
+      </div>
+      <div class="option recommended">
+        <div class="opt-badge">Do next</div>
+        <h4>🏠 Book the stay</h4>
+        <p>Verify the <a href="stay.html" style="color:inherit;font-weight:700;">recommended apartment</a> for <strong>Aug 17–21 (4 nights)</strong>, message the host about the 3:30 AM arrival, screenshot the Chinese address.</p>
+      </div>
+      <div class="option">
+        <h4>🗓️ Closer to the trip</h4>
+        <p>💾 Buy eSIM online (cheaper than airport)<br>🌀 Watch typhoon bulletins from ~Aug 11<br>💵 Change PHP→TWD at Taoyuan arrivals<br>🎫 Optional: pre-buy 101 Observatory on Klook</p>
+      </div>
+    </div>
+
+    <div class="tip tip-amber reveal"><span class="ico">📏</span><div><strong>About these numbers:</strong> every figure is a July 2026 estimate at NT$1 = ₱1.93. The rate, all conversions and all totals are computed from single sources in the site's code — change the rate once (in <code>js/main.js</code>) and every page updates together. Verify the live exchange rate and accommodation price before finalizing your budget.</div></div>
+
+    <div class="hero-cta reveal" style="justify-content:flex-start;margin-top:34px;">
+      <a href="budget.html" class="btn btn-red">Open the Budget Dashboard</a>
+      <a href="itinerary.html" class="btn btn-outline">Back to Itinerary</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="foot-title">TAI<span>WANDER</span> ’26 🏮</div>
+      <p>Manila → Taipei · 18–21 August 2026 · Built with love, soy milk and an unreasonable number of night-market snacks.</p>
+    </div>
+    <div class="foot-col"><h4>Plan</h4><ul>
+      <li><a href="itinerary.html">Itinerary</a></li>
+      <li><a href="stay.html">Where to Stay</a></li>
+      <li><a href="transport.html">Transport</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="summary.html">Trip Summary</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>The Days</h4><ul>
+      <li><a href="day1.html">Day 1 — Arrival & Raohe</a></li>
+      <li><a href="day2.html">Day 2 — The Classics</a></li>
+      <li><a href="day3.html">Day 3 — Jiufen & Shifen</a></li>
+      <li><a href="day4.html">Day 4 — Departure</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>Guides</h4><ul>
+      <li><a href="food.html">Food Guide</a></li>
+      <li><a href="essentials.html">Essentials</a></li>
+      <li><a href="about.html">About this Planner</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">Prices, timetables and listings are best-effort estimates as of July 2026 — always confirm live rates, opening days and transit schedules before departure. Not affiliated with any listed business.</div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>

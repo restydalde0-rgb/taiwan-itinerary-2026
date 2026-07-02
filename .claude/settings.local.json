@@ -4,7 +4,18 @@
       "WebSearch",
       "WebFetch(domain:sites.google.com)",
       "Skill(dataviz)",
-      "Bash(node scripts/validate_palette.js \"#2a78d6,#1baf7a,#eda100,#008300,#4a3aa7,#e34948\" --surface \"#ffffff\" --mode light)"
+      "Bash(node scripts/validate_palette.js \"#2a78d6,#1baf7a,#eda100,#008300,#4a3aa7,#e34948\" --surface \"#ffffff\" --mode light)",
+      "Bash(python *)",
+      "Bash(node --check js/main.js)",
+      "Bash(grep -n \"NT\\\\$\" food.html)",
+      "Bash(grep -n \"NT\\\\$\" index.html itinerary.html essentials.html about.html summary.html stay.html day1.html day2.html day3.html day4.html)",
+      "Bash(grep -v \"NT\\\\$1 = \")",
+      "Bash(grep -v \"≈ NT\\\\$\")",
+      "Bash(grep -n \"≈ NT\\\\$\" index.html itinerary.html essentials.html about.html summary.html stay.html budget.html food.html transport.html)",
+      "Bash(grep -n \"NT\\\\$300–500\\\\|NT\\\\$\" essentials.html)",
+      "Bash(kill %1)",
+      "Bash(taskkill //F //IM python.exe //FI \"WINDOWTITLE eq *\")",
+      "Bash(git add *)"
     ]
   }
 }

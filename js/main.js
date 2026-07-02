@@ -4,6 +4,64 @@
 // the whole site.
 // ==============================================================
 
+// ==============================================================
+// PHP-FIRST MONEY ENGINE
+// One rate drives every price on the site. Elements opt in with:
+//   <span class="money" data-twd="140"></span>            → ₱270 / NT$140
+//   <span class="money" data-twd="200" data-twd-max="250"> → ranges
+//   <span class="money" data-twd="0">                      → "Free"
+//   data-suffix="/ pax" adds a small note after the PHP figure.
+// Tables with class "expense-table" get their data-twd rows summed
+// into the tfoot .money[data-total] cell (ranges use the midpoint),
+// so day totals and the trip summary can never drift out of sync.
+// Tables flagged data-nosum are excluded from page grand totals.
+// ==============================================================
+const RATE = 1.93; // NT$1 = ₱1.93 (July 2026 estimate — update here only)
+
+const phpFmt = v => '₱' + Math.round(v).toLocaleString('en-US');
+const twdFmt = v => 'NT$' + Math.round(v).toLocaleString('en-US');
+
+function renderMoney(el, twd, twdMax) {
+  if (twd === 0 && !twdMax) {
+    el.innerHTML = '<span class="m-free">Free</span>';
+    return;
+  }
+  const php = twdMax ? phpFmt(twd * RATE) + '–' + phpFmt(twdMax * RATE) : phpFmt(twd * RATE);
+  const nt = twdMax ? twdFmt(twd) + '–' + twdFmt(twdMax) : twdFmt(twd);
+  const note = el.dataset.suffix ? ' <span class="m-note">' + el.dataset.suffix + '</span>' : '';
+  el.innerHTML = '<b class="m-php">' + php + note + '</b><span class="m-twd">≈ ' + nt + '</span>';
+}
+
+document.querySelectorAll('.money[data-twd]').forEach(el => {
+  renderMoney(el, parseFloat(el.dataset.twd), el.dataset.twdMax ? parseFloat(el.dataset.twdMax) : null);
+});
+
+document.querySelectorAll('.expense-table').forEach(table => {
+  let sum = 0;
+  // Only the amount column (last cell) counts — inline money mentions
+  // in the description cell are informational, not line items.
+  table.querySelectorAll('tbody td:last-child > .money[data-twd]').forEach(el => {
+    const lo = parseFloat(el.dataset.twd);
+    const hi = el.dataset.twdMax ? parseFloat(el.dataset.twdMax) : lo;
+    sum += (lo + hi) / 2;
+  });
+  const totalEl = table.querySelector('.money[data-total]');
+  if (totalEl) renderMoney(totalEl, Math.round(sum), null);
+  // expose for cross-table grand totals (summary page)
+  table.dataset.sum = Math.round(sum);
+});
+
+// Grand total across the page's expense tables (summary page)
+const grandEls = document.querySelectorAll('.money[data-grand]');
+if (grandEls.length) {
+  let grand = 0;
+  document.querySelectorAll('.expense-table:not([data-nosum])').forEach(t => { grand += parseFloat(t.dataset.sum || 0); });
+  grandEls.forEach(el => {
+    const div = parseFloat(el.dataset.divide || 1);
+    renderMoney(el, Math.round(grand / div), null);
+  });
+}
+
 // ---------- Theme (dark mode) ----------
 const THEME_KEY = 'taiwan2026-theme';
 const themeToggle = document.getElementById('themeToggle');
@@ -145,7 +203,7 @@ if (donutSvg && donutLegend) {
     seg.setAttribute('tabindex', '0');
     const name = items[i].querySelector('.nm').textContent;
     const title = document.createElementNS(NS, 'title');
-    title.textContent = `${name}: NT$${values[i].toLocaleString()} (${(v / total * 100).toFixed(1)}%)`;
+    title.textContent = `${name}: ${phpFmt(values[i] * RATE)} (NT$${values[i].toLocaleString()}) · ${(v / total * 100).toFixed(1)}%`;
     seg.appendChild(title);
     // legend ↔ segment cross-highlight
     seg.addEventListener('mouseenter', () => { donutSvg.classList.add('dim'); items[i].style.background = 'var(--surface-2)'; });
@@ -176,8 +234,7 @@ if (hbars.length) {
   hbars.forEach(b => barObs.observe(b));
 }
 
-// ---------- Currency converter (NT$1 = ₱1.93, Jul 2026) ----------
-const RATE = 1.93;
+// ---------- Currency converter (rate shared with money engine) ----------
 const twdInput = document.getElementById('twdInput');
 const phpInput = document.getElementById('phpInput');
 if (twdInput && phpInput) {
