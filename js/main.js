@@ -107,15 +107,25 @@ window.addEventListener('scroll', () => {
 if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 // ---------- Reveal-on-scroll ----------
-const revealer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealer.observe(el));
+// threshold must stay 0: a ratio threshold (e.g. 0.12) can never be reached
+// by elements taller than ~viewport/threshold (the day-page timelines are
+// 5–9× the phone viewport), which left them permanently at opacity 0 on
+// mobile. rootMargin approximates the old "slightly into view" feel.
+// CSS only hides .reveal under html.js-reveal, so content stays visible
+// if this script never runs.
+const revealEls = document.querySelectorAll('.reveal');
+if (revealEls.length && 'IntersectionObserver' in window) {
+  document.documentElement.classList.add('js-reveal');
+  const revealer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealer.observe(el));
+}
 
 // ---------- Countdown to departure (home) ----------
 const cdEl = document.getElementById('countdown');

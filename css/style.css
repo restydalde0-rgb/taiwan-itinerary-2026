@@ -281,11 +281,14 @@ section.alt { background: var(--surface); transition: background 0.35s ease; }
 .day-pager .ttl { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--ink); margin-top: 4px; }
 .day-pager a.next { text-align: right; }
 
-/* ---------- Reveal on scroll ---------- */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* ---------- Reveal on scroll ----------
+   Hidden state is gated on html.js-reveal (set by main.js only when the
+   IntersectionObserver is active), so content is never lost if JS fails. */
+.reveal { transition: opacity 0.7s ease, transform 0.7s ease; }
+html.js-reveal .reveal { opacity: 0; transform: translateY(28px); }
+html.js-reveal .reveal.visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  html.js-reveal .reveal { opacity: 1; transform: none; transition: none; }
   .hero-orb, .hero-scroll { animation: none; }
 }
 
