@@ -113,26 +113,17 @@
       </table>
     </div>
 
-    <!-- What's locked vs pending -->
+    <!-- Live trip-preparation dashboard (synced across all pages) -->
     <div class="reveal" style="margin-top:40px;">
       <div class="section-kicker">Status Board</div>
-      <h2 class="section-title" style="font-size:1.6rem;">Booked vs. To-Do</h2>
+      <h2 class="section-title" style="font-size:1.6rem;">Trip Preparation</h2>
+      <p class="section-sub" style="margin-bottom:26px;">Your live planning checklist. Tick things off here — or anywhere on the site — and every page updates together. Progress is saved on this device automatically.</p>
     </div>
-    <div class="option-grid reveal">
-      <div class="option">
-        <h4>✅ Locked in</h4>
-        <p>✈️ Flights MNL ⇄ TPE (17 & 21 Aug)<br>🗓️ Dates: 18–21 August 2026<br>🧭 Full day-by-day routing (this site)</p>
-      </div>
-      <div class="option recommended">
-        <div class="opt-badge">Do next</div>
-        <h4>🏠 Book the stay</h4>
-        <p>Verify the <a href="stay.html" style="color:inherit;font-weight:700;">recommended apartment</a> for <strong>Aug 17–21 (4 nights)</strong>, message the host about the 3:30 AM arrival, screenshot the Chinese address.</p>
-      </div>
-      <div class="option">
-        <h4>🗓️ Closer to the trip</h4>
-        <p>💾 Buy eSIM online (cheaper than airport)<br>🌀 Watch typhoon bulletins from ~Aug 11<br>💵 Change PHP→TWD at Taoyuan arrivals<br>🎫 Optional: pre-buy 101 Observatory on Klook</p>
-      </div>
-    </div>
+
+    <div class="task-progress reveal" data-task-progress style="margin-bottom:26px;"></div>
+    <div class="task-panel reveal" data-task-list></div>
+
+    <div class="tip tip-blue reveal" style="margin-top:26px;"><span class="ico">🔗</span><div><strong>One checklist, everywhere:</strong> the "mark as booked" buttons on <a href="day1.html" style="color:inherit;font-weight:700;">Day 1</a>, the <a href="stay.html" style="color:inherit;font-weight:700;">Stay guide</a>, <a href="transport.html" style="color:inherit;font-weight:700;">Transport</a> and <a href="budget.html" style="color:inherit;font-weight:700;">Budget</a> all read and write this same list — check a task there and it's checked here.</div></div>
 
     <div class="tip tip-amber reveal"><span class="ico">📏</span><div><strong>About these numbers:</strong> every figure is a July 2026 estimate at NT$1 = ₱1.93. The rate, all conversions and all totals are computed from single sources in the site's code — change the rate once (in <code>js/main.js</code>) and every page updates together. Verify the live exchange rate and accommodation price before finalizing your budget.</div></div>
 

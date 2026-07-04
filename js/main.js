@@ -289,6 +289,140 @@ if (twdInput && phpInput) {
   });
 }
 
+// ==============================================================
+// TRIP PREPARATION ENGINE — one centralized checklist, all pages
+// Single source of truth: the TRIP_TASKS registry below + one
+// localStorage key. Pages opt in with declarative hooks:
+//   <div data-task-list></div>            → full grouped checklist
+//   <div data-task-progress></div>        → progress tracker
+//   <div data-task-progress="compact">    → one-line tracker (home)
+//   <button data-task-toggle="hotel">     → inline toggle button
+// Checking a task anywhere updates every widget on the page
+// instantly, persists across refreshes, and syncs open tabs.
+// ==============================================================
+const TRIP_TASKS = [
+  { id: 'flights',   icon: '✈️', label: 'Book round-trip flights',            note: 'MNL ⇄ TPE · 17 & 21 Aug — ticketed for this plan',                        group: 'Lock in now' },
+  { id: 'hotel',     icon: '🏨', label: 'Book the recommended stay',          note: 'Aug 17–21 · 4 nights (the 2 AM arrival needs the Aug 17 night)',          group: 'Lock in now',            href: 'stay.html',      hrefLabel: 'see the pick →',
+    cta: 'Mark the stay as booked', ctaDone: 'Stay booked ✓' },
+  { id: 'host',      icon: '🌙', label: 'Message the host about the 3:30 AM arrival', note: 'Confirm anytime self check-in · screenshot the address in Chinese', group: 'Lock in now' },
+  { id: 'insurance', icon: '🛡️', label: 'Buy travel insurance',               note: 'Covers typhoon-season delays and medical',                                 group: 'In the weeks before',
+    cta: 'Mark insurance as done', ctaDone: 'Insurance sorted ✓' },
+  { id: 'esim',      icon: '📶', label: 'Buy the eSIM online',                note: 'Klook / KKday — cheaper than the airport, live the moment you land',       group: 'In the weeks before',    href: 'essentials.html', hrefLabel: 'connectivity guide →',
+    cta: 'Mark eSIM as purchased', ctaDone: 'eSIM purchased ✓' },
+  { id: 'klook',     icon: '🎫', label: 'Pre-book Taipei 101 / Klook tickets', note: 'Observatory ×2 is the only ticket worth pre-buying',                      group: 'In the weeks before',
+    cta: 'Mark tickets as booked', ctaDone: 'Tickets booked ✓' },
+  { id: 'cash',      icon: '💵', label: 'Set aside PHP cash to exchange',     note: 'Change PHP → TWD at Taoyuan arrivals — beats Manila rates',                group: 'In the weeks before',    href: 'budget.html',    hrefLabel: 'cash strategy →',
+    cta: 'Mark currency as ready', ctaDone: 'Currency ready ✓' },
+  { id: 'apps',      icon: '📱', label: 'Install apps & offline maps',        note: 'Google Maps, Taipei Metro Go, Bus+, CWA Weather, offline Translate',       group: 'Final days & arrival',   href: 'essentials.html', hrefLabel: 'app list →' },
+  { id: 'transfer',  icon: '🚌', label: 'Confirm the airport transfer plan',  note: 'Bus 1819 runs 24 hrs — no booking needed, just know the counter',          group: 'Final days & arrival',   href: 'day1.html',      hrefLabel: 'arrival plan →',
+    cta: 'Mark transfer as planned', ctaDone: 'Transfer planned ✓' },
+  { id: 'easycard',  icon: '💳', label: 'Buy & load EasyCards on arrival',    note: 'NT$100 card + NT$600 load each, at the 24-hr store in arrivals',           group: 'Final days & arrival',   href: 'transport.html', hrefLabel: 'how it works →',
+    cta: 'Mark EasyCard as done', ctaDone: 'EasyCard done ✓' },
+];
+
+(function tripTasks() {
+  const TASK_KEY = 'taiwan2026-tasks';
+
+  function loadState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(TASK_KEY));
+      if (saved && typeof saved === 'object') return saved;
+    } catch (e) {}
+    // First visit: flights are already ticketed in this plan, so
+    // the tracker starts truthful instead of at zero.
+    return { flights: true };
+  }
+  let state = loadState();
+
+  function saveState() {
+    try { localStorage.setItem(TASK_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function setTask(id, done) {
+    state[id] = !!done;
+    saveState();
+    renderAll();
+  }
+
+  const doneCount = () => TRIP_TASKS.filter(t => state[t.id]).length;
+
+  // ----- full checklist -----
+  function renderList(root) {
+    const groups = [...new Set(TRIP_TASKS.map(t => t.group))];
+    root.innerHTML = groups.map(g => {
+      const rows = TRIP_TASKS.filter(t => t.group === g).map(t => {
+        const done = !!state[t.id];
+        const link = t.href ? ` <a href="${t.href}">${t.hrefLabel}</a>` : '';
+        return `<li class="task-item${done ? ' done' : ''}">
+          <label>
+            <input type="checkbox" data-task="${t.id}"${done ? ' checked' : ''} />
+            <span class="ti-tick" aria-hidden="true"></span>
+            <span class="ti-icon" aria-hidden="true">${t.icon}</span>
+            <span class="ti-text"><b>${t.label}</b><small>${t.note}${link}</small></span>
+            <span class="ti-state">${done ? 'Done' : 'To do'}</span>
+          </label>
+        </li>`;
+      }).join('');
+      return `<div class="task-group"><h3>${g}</h3><ul>${rows}</ul></div>`;
+    }).join('');
+  }
+
+  // ----- progress tracker -----
+  function renderProgress(root) {
+    const done = doneCount(), total = TRIP_TASKS.length;
+    const pct = Math.round(done / total * 100);
+    const compact = root.dataset.taskProgress === 'compact';
+    const milestone =
+      done === total ? '🎉 Fully prepped — see you in Taipei!' :
+      done >= total * 0.7 ? 'Almost there — just the last few to lock in.' :
+      done >= total * 0.35 ? 'Good momentum — keep ticking them off.' :
+      'Start with the stay: everything else follows from it.';
+    root.innerHTML = `
+      <div class="tp-head">
+        <span class="tp-title">${compact ? 'Trip preparation' : 'Preparation status'}</span>
+        <span class="tp-count"><b>${done}</b> of ${total} done</span>
+      </div>
+      <div class="tp-track" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Trip preparation progress">
+        <div class="tp-fill" style="width:${pct}%"></div>
+      </div>
+      ${compact ? '' : `<div class="tp-note">${milestone}</div>`}`;
+  }
+
+  // ----- inline toggle buttons -----
+  function renderToggle(btn) {
+    const task = TRIP_TASKS.find(t => t.id === btn.dataset.taskToggle);
+    if (!task) return;
+    const done = !!state[task.id];
+    btn.classList.toggle('on', done);
+    btn.setAttribute('aria-pressed', done);
+    btn.innerHTML = `<span class="tt-box" aria-hidden="true">✓</span><span>${done ? (task.ctaDone || 'Done ✓') : (task.cta || 'Mark as done')}</span>`;
+  }
+
+  const lists = document.querySelectorAll('[data-task-list]');
+  const bars = document.querySelectorAll('[data-task-progress]');
+  const toggles = document.querySelectorAll('[data-task-toggle]');
+  if (!lists.length && !bars.length && !toggles.length) return;
+
+  function renderAll() {
+    lists.forEach(renderList);
+    bars.forEach(renderProgress);
+    toggles.forEach(renderToggle);
+  }
+
+  document.addEventListener('change', e => {
+    if (e.target.matches('input[data-task]')) setTask(e.target.dataset.task, e.target.checked);
+  });
+  toggles.forEach(btn => btn.addEventListener('click', () => {
+    const id = btn.dataset.taskToggle;
+    setTask(id, !state[id]);
+  }));
+  // another open tab checked something → mirror it here
+  window.addEventListener('storage', e => {
+    if (e.key === TASK_KEY) { state = loadState(); renderAll(); }
+  });
+
+  renderAll();
+})();
+
 // ---------- Packing checklist with localStorage ----------
 const checks = document.querySelectorAll('[data-check]');
 if (checks.length) {
