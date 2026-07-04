@@ -263,6 +263,16 @@ section.alt { background: var(--surface); transition: background 0.35s ease; }
 .glance-cell .k { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
 .glance-cell .v { font-weight: 700; font-size: 0.95rem; margin-top: 2px; }
 
+/* Morning / afternoon / evening flow strip — the day in one glance */
+.flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 0 0 10px; }
+.flow-cell {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 16px 18px; box-shadow: var(--shadow-sm);
+}
+.flow-cell .fk { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-deep); display: flex; align-items: center; gap: 7px; }
+.flow-cell .fv { margin-top: 7px; font-weight: 600; font-size: 0.92rem; line-height: 1.55; color: var(--ink-soft); }
+.flow-cell .fv b { color: var(--ink); }
+
 /* Prev / next day pager */
 .day-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 52px; }
 .day-pager a {
